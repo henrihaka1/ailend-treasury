@@ -1,0 +1,5 @@
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Repository\bin\Debug\netcoreapp3.1\AILendTreasury.Repository.deps.json
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Repository\bin\Debug\netcoreapp3.1\AILendTreasury.Repository.dll
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Repository\obj\Debug\netcoreapp3.1\AILendTreasury.Repository.csprojAssemblyReference.cache
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Repository\obj\Debug\netcoreapp3.1\AILendTreasury.Repository.AssemblyInfoInputs.cache
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Repository\obj\Debug\netcoreapp3.1\AILendTreasury.Repository.AssemblyInfo.cs

@@ -1,0 +1,12 @@
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\bin\Debug\netcoreapp3.1\AILendTreasury.Services.deps.json
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\bin\Debug\netcoreapp3.1\AILendTreasury.Services.dll
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\bin\Debug\netcoreapp3.1\AILendTreasury.Services.pdb
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\bin\Debug\netcoreapp3.1\AILendTreasury.Data.dll
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\bin\Debug\netcoreapp3.1\AILendTreasury.Data.pdb
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\obj\Debug\netcoreapp3.1\AILendTreasury.Services.csprojAssemblyReference.cache
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\obj\Debug\netcoreapp3.1\AILendTreasury.Services.AssemblyInfoInputs.cache
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\obj\Debug\netcoreapp3.1\AILendTreasury.Services.AssemblyInfo.cs
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\obj\Debug\netcoreapp3.1\AILendTreasury.Services.csproj.CoreCompileInputs.cache
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\obj\Debug\netcoreapp3.1\AILendTreasury.Services.csproj.CopyComplete
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\obj\Debug\netcoreapp3.1\AILendTreasury.Services.dll
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Services\obj\Debug\netcoreapp3.1\AILendTreasury.Services.pdb

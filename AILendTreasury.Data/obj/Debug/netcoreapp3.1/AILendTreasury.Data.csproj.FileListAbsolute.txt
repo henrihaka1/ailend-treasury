@@ -1,0 +1,12 @@
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\bin\Debug\netcoreapp3.1\AILendTreasury.Data.deps.json
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\bin\Debug\netcoreapp3.1\AILendTreasury.Data.runtimeconfig.json
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\bin\Debug\netcoreapp3.1\AILendTreasury.Data.runtimeconfig.dev.json
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\bin\Debug\netcoreapp3.1\AILendTreasury.Data.dll
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\obj\Debug\netcoreapp3.1\AILendTreasury.Data.csprojAssemblyReference.cache
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\obj\Debug\netcoreapp3.1\AILendTreasury.Data.AssemblyInfoInputs.cache
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\obj\Debug\netcoreapp3.1\AILendTreasury.Data.AssemblyInfo.cs
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\obj\Debug\netcoreapp3.1\AILendTreasury.Data.genruntimeconfig.cache
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\bin\Debug\netcoreapp3.1\AILendTreasury.Data.pdb
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\obj\Debug\netcoreapp3.1\AILendTreasury.Data.csproj.CoreCompileInputs.cache
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\obj\Debug\netcoreapp3.1\AILendTreasury.Data.dll
+C:\Users\henri\Desktop\Ailend Treasury\AILendTreasury.Data\obj\Debug\netcoreapp3.1\AILendTreasury.Data.pdb
