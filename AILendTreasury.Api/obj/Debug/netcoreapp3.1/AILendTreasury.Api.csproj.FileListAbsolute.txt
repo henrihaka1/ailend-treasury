@@ -1,6 +1,5 @@
 C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\AILendTreasury.Api.exe
 C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\AILendTreasury.Api.deps.json
 C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\AILendTreasury.Api.runtimeconfig.json
@@ -45,3 +44,4 @@ C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\obj\Debug\netcoreapp3.
 C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\obj\Debug\netcoreapp3.1\AILendTreasury.Api.csproj.CoreCompileInputs.cache
 C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\obj\Debug\netcoreapp3.1\AILendTreasury.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\obj\Debug\netcoreapp3.1\scopedcss\bundle\AILendTreasury.Api.styles.css

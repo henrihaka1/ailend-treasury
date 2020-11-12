@@ -27,9 +27,13 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AILendTreasury.Client", "AI
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "8727"
+		SlnRelativePath = "AILendTreasury.Client\"
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{AA69AA59-BABC-4F97-96AB-BECB25D47B49}"
+	ProjectSection(SolutionItems) = preProject
+		DROP_TABLES.sql = DROP_TABLES.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

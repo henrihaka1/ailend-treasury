@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.IISIntegration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,9 +37,15 @@ namespace AilendTreasury.Api
                 )
             );
 
+            services.AddAuthentication(IISDefaults.AuthenticationScheme);
+
             services.AddControllers();
             services.AddServicesOfType<IScopedService>();
             services.AddServicesWithAttributeOfType<ScopedServiceAttribute>();
+
+           
+            // services.AddResponseCaching();
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,11 +56,16 @@ namespace AilendTreasury.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
             {

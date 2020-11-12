@@ -15,7 +15,7 @@ namespace AILendTreasury.Api.Controllers
         [ProducesResponseType(200)]
         public void TestMethod()
         {
-            Console.WriteLine("This Works");
+            Console.WriteLine("sdasda");
         }
     }
 }
