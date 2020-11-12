@@ -7,6 +7,7 @@ namespace AILendTreasury.Data.Entities
 {
     public class Balance
     {
+        public int Id { get; set; }
         public DateTime SubmitedDate { get; set; }
         public JsonDocument CurrentBalance { get; set; }
     }

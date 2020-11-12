@@ -6,5 +6,6 @@ namespace AILendTreasury.Data.Entities
 {
     public class Outside : Transaction
     {
+        public int Id { get; set; }
     }
 }

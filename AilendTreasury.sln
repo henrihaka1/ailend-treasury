@@ -9,27 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AILendTreasury.Services", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AILendTreasury.Data", "AILendTreasury.Data\AILendTreasury.Data.csproj", "{05583BDE-C433-4EF3-AB64-4F076EFD0509}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AILendTreasury.Client", "AILendTreasury.Client\", "{D962ABFE-396F-4131-ACFF-4DB10A18DBE1}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_8727"
-		Debug.AspNetCompiler.PhysicalPath = "AILendTreasury.Client\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_8727\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_8727"
-		Release.AspNetCompiler.PhysicalPath = "AILendTreasury.Client\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_8727\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "8727"
-		SlnRelativePath = "AILendTreasury.Client\"
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{AA69AA59-BABC-4F97-96AB-BECB25D47B49}"
 	ProjectSection(SolutionItems) = preProject
 		01_INSERT_CURRENCIES.sql = 01_INSERT_CURRENCIES.sql
@@ -54,10 +33,6 @@ Global
 		{05583BDE-C433-4EF3-AB64-4F076EFD0509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05583BDE-C433-4EF3-AB64-4F076EFD0509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05583BDE-C433-4EF3-AB64-4F076EFD0509}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D962ABFE-396F-4131-ACFF-4DB10A18DBE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D962ABFE-396F-4131-ACFF-4DB10A18DBE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D962ABFE-396F-4131-ACFF-4DB10A18DBE1}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{D962ABFE-396F-4131-ACFF-4DB10A18DBE1}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

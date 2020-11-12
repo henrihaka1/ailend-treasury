@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AILendTreasury.Data.Entities
 {
-    public class Currencies
+    public class Currency
     {
         public int Id { get; set; }
         public string Label { get; set; }
