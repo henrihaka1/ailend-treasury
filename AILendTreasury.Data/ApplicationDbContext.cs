@@ -5,7 +5,7 @@ namespace AILendTreasury.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
+        public DbSet<Staff> Staff { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Customer> Customers { get; set; }
 
