@@ -43,7 +43,11 @@ namespace AilendTreasury.Api
             services.AddServicesOfType<IScopedService>();
             services.AddServicesWithAttributeOfType<ScopedServiceAttribute>();
 
-           
+            // Business Services
+            services.AddServicesOfType<IScopedService>();
+
+            // Repositories
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             // services.AddResponseCaching();
             services.AddControllers();
         }

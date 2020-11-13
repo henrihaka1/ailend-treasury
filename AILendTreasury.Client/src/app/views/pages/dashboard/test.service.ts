@@ -10,8 +10,7 @@ export class TestService {
   constructor(private http:HttpClient) { 
   }
 
-  test():Observable<any> {
-    const header = new HttpHeaders();
-    return this.http.get<any>("http://localhost:5000/api/position/test");
+  test():Observable<any>{ 
+    return this.http.get<any>("http://localhost:5000/api/currencies/get");
   }
 }

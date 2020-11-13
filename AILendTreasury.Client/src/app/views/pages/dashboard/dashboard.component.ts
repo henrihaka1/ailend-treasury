@@ -19,6 +19,6 @@ export class DashboardComponent implements OnInit {
 
   test()
   {
-    this.service.test().subscribe();
+    this.service.test().subscribe(response => console.log(response));
   }
 }
