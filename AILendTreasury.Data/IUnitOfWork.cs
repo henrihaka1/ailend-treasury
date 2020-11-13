@@ -8,6 +8,7 @@ namespace AILendTreasury.Data
     public interface IUnitOfWork
     {
         ICurrenciesRepository Currencies { get;}
+        IBalanceRepository Balances { get; }
         int SaveChanges();
     }
 }

@@ -25,7 +25,6 @@ namespace AILendTreasury.Api.Controllers
         [HttpGet("get")]
         public async Task<IActionResult> GetAllCurrencies()
         {
-            Console.WriteLine("Hello");
             List<CurrenciesDTO> currenciesList = await _currenciesService.GetCurrencies();
             return Ok(currenciesList);
         }

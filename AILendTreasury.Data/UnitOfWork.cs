@@ -7,6 +7,7 @@ namespace AILendTreasury.Data
     {
         readonly ApplicationDbContext _context;
         ICurrenciesRepository _currencies;
+        IBalanceRepository _balances;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -21,6 +22,16 @@ namespace AILendTreasury.Data
                     _currencies = new CurrenciesRepository(_context);
 
                 return _currencies;
+            }
+        }
+
+        public IBalanceRepository Balances
+        {
+            get
+            {
+                if (_balances == null)
+                    _balances = new BalanceRepository(_context);
+                return _balances;
             }
         }
 

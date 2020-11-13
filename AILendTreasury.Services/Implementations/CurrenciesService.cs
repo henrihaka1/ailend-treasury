@@ -12,7 +12,6 @@ namespace AILendTreasury.Services.Implementations
     public class CurrenciesService : ICurrenciesService
     {
         private readonly IUnitOfWork _unitOfWork;
-
         public CurrenciesService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;

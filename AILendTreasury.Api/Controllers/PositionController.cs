@@ -11,7 +11,7 @@ namespace AILendTreasury.Api.Controllers
     [ApiController]
     public class PositionController : ControllerBase
     {
-        [HttpGet("test")]
+        [HttpGet("get/current")]
         [ProducesResponseType(200)]
         public void TestMethod()
         {
