@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AILend.DAL.Repositories.Interfaces
+namespace AILendTreasury.Data.Repositories.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : class
     {

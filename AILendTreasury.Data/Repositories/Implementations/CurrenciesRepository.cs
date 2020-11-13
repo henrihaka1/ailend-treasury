@@ -1,12 +1,7 @@
-﻿using AILend.DAL.Repositories;
-using AILend.DAL.Repositories.Interfaces;
-using AILendTreasury.Data.Entities;
+﻿using AILendTreasury.Data.Entities;
 using AILendTreasury.Data.Repositories.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace AILendTreasury.Data.Repositories.Implementations

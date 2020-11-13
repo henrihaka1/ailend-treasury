@@ -1,12 +1,11 @@
-﻿
-using AILend.DAL.Repositories.Interfaces;
+﻿using AILendTreasury.Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace AILend.DAL.Repositories
+namespace AILendTreasury.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {

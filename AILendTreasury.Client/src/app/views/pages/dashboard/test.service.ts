@@ -19,7 +19,6 @@ export class TestService {
   }
 
   submitNewBalance(){
-    console.log("ok");
     const newBalance = {
       ALL: 10000000,
       EUR: 2000000,

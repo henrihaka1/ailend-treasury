@@ -9,6 +9,7 @@ namespace AILendTreasury.Data
     {
         ICurrenciesRepository Currencies { get;}
         IBalanceRepository Balances { get; }
+        IPositionRepository Positions { get; }
         int SaveChanges();
     }
 }
