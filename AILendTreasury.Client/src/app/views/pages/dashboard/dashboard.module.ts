@@ -7,6 +7,7 @@ import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootst
 import { CoreModule } from '../../../core/core.module';
 import { PartialsModule } from '../../partials/partials.module';
 import { DashboardComponent } from './dashboard.component';
+import { StartingPositionComponent } from './starting-position/starting-position.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { DashboardComponent } from './dashboard.component';
   providers: [],
   declarations: [
     DashboardComponent,
+    StartingPositionComponent,
   ]
 })
 export class DashboardModule {

@@ -1,7 +1,15 @@
+<ai-starting-position></ai-starting-position>
 <div class="container">
 	<div class="row">
 		This works!
-		<button (click)="test()">TEST</button>
+		<button>TEST</button>
 		<button (click)="submitNewBalance()">Submit</button>
+	</div>
+	<div *ngIf="showBalance">
+		<div *ngFor="let item of latestBalance; index as i">
+			{{item.label}}
+			{{item.amount}}
+			<br>
+		</div>
 	</div>
 </div>

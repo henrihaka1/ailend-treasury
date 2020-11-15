@@ -1,0 +1,19 @@
+<div>
+    <div class="currency-container">
+        <div *ngFor="let item of startingBalance" class="currency-box">
+            <div class="currency-box__label">
+               <b>{{item.label}}</b> <img class="short-long" src="../../../../../assets/media/logos/long.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="amount-container">
+        <span class="amount-box__label">
+            Nostro Balance
+        </span>
+        <div *ngFor="let item of startingBalance" class="amount-box">
+            <div class="amount-box__amount">
+               {{item.amount}}
+            </div>
+        </div>
+    </div>
+</div>

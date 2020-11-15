@@ -1,5 +1,8 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
+import { fromJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
+import { BalanceDTO } from 'src/app/core/_models/BalanceDTO';
+import { CurrencyBalance } from 'src/app/core/_models/CurrencyBalance';
 import { TestService } from './test.service';
 
 
@@ -10,7 +13,9 @@ import { TestService } from './test.service';
 })
 export class DashboardComponent implements OnInit {
 
-  today = new Date();
+  latestBalance :CurrencyBalance[];
+  currencies = [];
+  showBalance =false;
 
   constructor(private service: TestService)
   {
@@ -18,14 +23,25 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllCurrencies();
   }
 
-  test()
+  getAllCurrencies()
   {
-    this.service.test().subscribe(response => console.log(response));
+    this.service.test().subscribe(response => {
+      this.currencies = response;
+      console.log(this.currencies);
+
+    });
   }
 
   submitNewBalance(){
-    this.service.submitNewBalance().subscribe();
+    this.service.submitNewBalance().subscribe(response => 
+      {
+        this.latestBalance = JSON.parse(response.balance);
+        console.log(this.latestBalance);
+        console.log(this.latestBalance[3].label);
+        this.showBalance=true;
+      });
   }
 }

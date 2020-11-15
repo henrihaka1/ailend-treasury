@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AILendTreasury.Services.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +12,18 @@ namespace AILendTreasury.Api.Controllers
     [ApiController]
     public class PositionController : ControllerBase
     {
-        [HttpGet("get/current")]
-        [ProducesResponseType(200)]
-        public void TestMethod()
-        {
-            Console.WriteLine("sdasda");
-        }
+        //[HttpGet("get/starting")]
+        //[ProducesResponseType(200)]
+        //public async Task<IActionResult> GetDailyStartingPosition([FromBody] DateTime today)
+        //{
+        //    try
+        //    {
+
+        //    }
+        //    catch
+        //    {
+        //        return BadRequest("The data has not been imported correctly from Midas!");
+        //    }
+        //}
     }
 }

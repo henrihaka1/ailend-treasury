@@ -21,9 +21,19 @@ namespace AILendTreasury.Data.Repositories.Implementations
 
         public async Task<Position> GetPositionByDate(string Date)
         {
-            Position position = new Position();
-            position = _context.Positions.Where(x => x.SubmitedDate.Date.ToString() == Date).FirstOrDefault();
-            return position;
+            DateTime dateTime = DateTime.Parse(Date);
+            return _context.Positions.
+                Where(x => x.SubmitedDate.Year ==dateTime.Year 
+                && x.SubmitedDate.Month == dateTime.Month
+                && x.SubmitedDate.Day == dateTime.Day).FirstOrDefault();
+        }
+
+        public async Task<Position> GetPositionByDate(DateTime Date)
+        {
+            return _context.Positions.
+                Where(x => x.SubmitedDate.Year == Date.Year
+                && x.SubmitedDate.Month == Date.Month
+                && x.SubmitedDate.Day == Date.Day).FirstOrDefault();
         }
     }
 }

@@ -1,0 +1,67 @@
+
+
+
+
+
+.currency-amount{
+    background-color: blueviolet;
+}
+
+.starting-balance__box{
+    display: inline-block;
+
+}
+
+.amount-container{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    .amount-box__label{
+        background-color: lightblue;
+        border: 2px solid rgb(13, 193, 253);
+        color: rgb(0, 71, 95);
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-left: 3px;
+        padding-right: 3px;
+
+    }
+    .amount-box{
+        display: inline-block;
+        .amount-box__amount {
+            background-color: rgb(241, 241, 241);
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            color: rgb(66, 66, 66);
+            border: 2px solid gray;
+            font-size: 14px;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 5px;
+        }
+    }
+}
+
+.currency-container{
+    margin-left: 100px;
+    .currency-box{
+        display: inline-block;
+        .currency-box__label {
+            background-color: rgb(0, 0, 53);
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            color: white;
+            font-size: 14px;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 15px;
+            .short-long{
+                padding-left: 10px;
+            }
+        }
+    }
+}
