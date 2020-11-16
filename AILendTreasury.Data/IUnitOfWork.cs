@@ -12,6 +12,7 @@ namespace AILendTreasury.Data
         IPositionRepository Positions { get; }
         IStaffRepository StaffMembers { get; }
         IAutomaticRepository AutomaticTransactions { get; }
+        IManualRepository ManualTransactions { get; }
         int SaveChanges();
     }
 }

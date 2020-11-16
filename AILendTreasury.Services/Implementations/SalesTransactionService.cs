@@ -56,5 +56,42 @@ namespace AILendTreasury.Services.Implementations
 
             }
         }
+        public async Task<List<SalesTransactionDTO>> GetSalesTransactionsByFilter(string firstCurrency, string secondCurrency)
+        {
+            List<Automatic> automatic = await _unitOfWork.AutomaticTransactions.GetAllTransactionsByFilter(firstCurrency, secondCurrency);
+            List<Manual> manuals = await _unitOfWork.ManualTransactions.GetAllTransactionsByFilter(firstCurrency, secondCurrency);
+            List<SalesTransactionDTO> transactionList = new List<SalesTransactionDTO>();
+            foreach(var transaction in automatic)
+            {
+                SalesTransactionDTO singleTransaction = new SalesTransactionDTO()
+                {
+                    ApprovedBy = transaction.ApprovedBy,
+                    BoughtCurrency = transaction.BoughtCurrency,
+                    CreatedDate = transaction.CreatedDate,
+                    Customer = transaction.Customer,
+                    ExchangeRate = transaction.ExchangeRate,
+                    SoldAmount = transaction.SoldAmount,
+                    SoldCurrency = transaction.SoldCurrency,
+                    BoughtAmount = transaction.SoldAmount * transaction.ExchangeRate,
+                };
+                transactionList.Add(singleTransaction);
+            }
+            foreach (var transaction in manuals)
+            {
+                SalesTransactionDTO singleTransaction = new SalesTransactionDTO()
+                {
+                    ApprovedBy = transaction.ApprovedBy,
+                    BoughtCurrency = transaction.BoughtCurrency,
+                    CreatedDate = transaction.CreatedDate,
+                    Customer = transaction.Customer,
+                    ExchangeRate = transaction.ExchangeRate,
+                    SoldAmount = transaction.SoldAmount,
+                    SoldCurrency = transaction.SoldCurrency,
+                    BoughtAmount = transaction.SoldAmount * transaction.ExchangeRate,
+                };
+                transactionList.Add(singleTransaction);
+            }
+            return transactionList;
+        }
     }
 }

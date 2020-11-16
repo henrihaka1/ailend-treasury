@@ -9,8 +9,9 @@ namespace AILendTreasury.Services.DTO
     {
         public string SoldCurrency { get; set; }
         public string BoughtCurrency { get; set; }
-        public long SoldAmount { get; set; }
+        public double SoldAmount { get; set; }
         public float ExchangeRate { get; set; }
+        public double BoughtAmount { get; set; }
         public DateTime CreatedDate { get; set; }
         public string Customer { get; set; }
         public Staff ApprovedBy { get; set; }

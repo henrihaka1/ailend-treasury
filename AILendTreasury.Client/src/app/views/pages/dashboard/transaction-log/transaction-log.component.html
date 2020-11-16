@@ -1,1 +1,28 @@
-<p>transaction-log works!</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="transaction-item text-center" *ngFor="let item of transactionList">
+            <div>
+                {{item.customer}}
+                {{item.soldCurrency}}
+                {{formatNumber(item.soldAmount.toFixed(2))}}
+                {{item.boughtCurrency}}
+                {{item.exchangeRate}}
+                {{formatNumber(item.boughtAmount.toFixed(2))}}
+                {{item.createdDate | date: "shortTime"}}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="" *ngFor="let item of transactionList">
+            {{item.customer}}
+            {{item.soldCurrency}}
+            {{formatNumber(item.soldAmount.toFixed(2))}}
+            {{item.boughtCurrency}}
+            {{item.exchangeRate}}
+            {{formatNumber(item.boughtAmount.toFixed(2))}}
+            {{item.createdDate | date: "shortTime"}}
+        </div>
+    </div>
+</div>
+
+

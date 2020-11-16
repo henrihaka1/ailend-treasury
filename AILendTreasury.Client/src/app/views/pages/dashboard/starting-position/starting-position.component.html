@@ -1,29 +1,24 @@
-<div>
-    <div class="currency-container">
-        <div *ngFor="let item of startingBalance" class="currency-box">
-            <div class="currency-box__label">
-               <b>{{item.label}}</b> <img class="short-long" src="../../../../../assets/media/logos/long.png" alt="">
-            </div>
+<div class="wrapper">
+    <div></div>
+    <div *ngFor="let item of startingBalance" class="label-box text-center">
+        <div>
+            <b>{{item.label}}</b> <img src="../../../../../assets/media/logos/long.png">
         </div>
     </div>
-    <div class="amount-container">
-        <span class="amount-box__label">
-            Nostro Balance
-        </span>
-        <div *ngFor="let item of startingBalance" class="amount-box">
-            <div class="amount-box__amount">
-               {{item.amount}}
-            </div>
+    <div class="title text-center">
+        Nostro Balance
+    </div>
+    <div *ngFor="let item of startingBalance" class="amount-box text-center">
+        <div>
+            {{formatNumber(item.amount.toFixed(2)) }}
         </div>
     </div>
-    <div class="amount-container">
-        <span class="amount-box__label">
-            Open Position
-        </span>
-        <div *ngFor="let item of latestBalance; index as i" class="amount-box">
-            <div class="amount-box__amount" [ngClass]="item.amount - startingBalance[i].amount<0 ?'text-danger' :'text-success'">
-               {{item.amount - startingBalance[i].amount}}
-            </div>
+    <div class="title text-center">
+        Open position
+    </div>
+    <div *ngFor="let item of latestBalance; index as i" class="amount-box text-center">
+        <div [ngClass]="item.amount - startingBalance[i].amount<0 ?'text-danger' :'text-success'">
+            {{formatNumber((item.amount - startingBalance[i].amount).toFixed(2))}}
         </div>
     </div>
 </div>

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AILendTreasury.Data.Repositories.Interfaces
 {
-    public interface IAutomaticRepository: IRepository<Automatic>
+    public interface IManualRepository : IRepository<Manual>
     {
-        public Task<List<Automatic>> GetAllTransactionsByFilter(string firstCurrency, string secondCurrency);
+        public Task<List<Manual>> GetAllTransactionsByFilter(string firstCurrency, string secondCurrency);
     }
 }

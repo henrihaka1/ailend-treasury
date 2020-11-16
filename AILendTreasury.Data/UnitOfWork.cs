@@ -11,6 +11,7 @@ namespace AILendTreasury.Data
         IPositionRepository _positions;
         IStaffRepository _staffMembers;
         IAutomaticRepository _automaticTransactions;
+        IManualRepository _manualTransactions;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -65,6 +66,15 @@ namespace AILendTreasury.Data
                 if (_automaticTransactions == null)
                     _automaticTransactions = new AutomaticRepository(_context);
                 return _automaticTransactions;
+            }
+        }
+        public IManualRepository ManualTransactions
+        {
+            get
+            {
+                if (_manualTransactions == null)
+                    _manualTransactions = new ManualRepository(_context);
+                return _manualTransactions;
             }
         }
 

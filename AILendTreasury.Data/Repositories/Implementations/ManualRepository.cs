@@ -8,17 +8,18 @@ using System.Linq;
 
 namespace AILendTreasury.Data.Repositories.Implementations
 {
-    public class AutomaticRepository: Repository<Automatic>, IAutomaticRepository
+    public class ManualRepository: Repository<Manual>, IManualRepository
     {
         private readonly ApplicationDbContext _context;
-        public AutomaticRepository(ApplicationDbContext context) :base(context)
+
+        public ManualRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }
 
-        public async Task<List<Automatic>> GetAllTransactionsByFilter(string firstCurrency, string secondCurrency)
+        public async Task<List<Manual>> GetAllTransactionsByFilter(string firstCurrency, string secondCurrency)
         {
-            return _context.AutomaticTransactions.Where(x => 
+            return _context.ManualsTransactions.Where(x =>
             (x.BoughtCurrency == firstCurrency && x.SoldCurrency == secondCurrency) ||
             (x.SoldCurrency == firstCurrency && x.BoughtCurrency == secondCurrency)).ToList();
         }
