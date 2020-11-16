@@ -29,5 +29,11 @@ namespace AILendTreasury.Api.Controllers
                 return BadRequest("Sale was not submited successfully");
             }
         }
+
+        [HttpGet("sales/get/{curr1}/{curr2}")]
+        public async Task<IActionResult> GetTransactionsByFilter(string curr1, string curr2)
+        {
+            return Ok(await _salesTransactionService.GetSalesTransactionsByFilter(curr1, curr2));
+        }
     }
 }
