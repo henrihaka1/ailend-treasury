@@ -9,6 +9,8 @@ namespace AILendTreasury.Data
         ICurrenciesRepository _currencies;
         IBalanceRepository _balances;
         IPositionRepository _positions;
+        IStaffRepository _staffMembers;
+        IAutomaticRepository _automaticTransactions;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -43,6 +45,26 @@ namespace AILendTreasury.Data
                 if (_positions == null)
                     _positions = new PositionRepository(_context);
                 return _positions;
+            }
+        }
+
+        public IStaffRepository StaffMembers
+        {
+            get
+            {
+                if (_staffMembers == null)
+                    _staffMembers = new StaffRepository(_context);
+                return _staffMembers;
+            }
+        }
+
+        public IAutomaticRepository AutomaticTransactions
+        {
+            get
+            {
+                if (_automaticTransactions == null)
+                    _automaticTransactions = new AutomaticRepository(_context);
+                return _automaticTransactions;
             }
         }
 

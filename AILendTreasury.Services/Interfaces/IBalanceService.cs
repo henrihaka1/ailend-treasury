@@ -11,5 +11,8 @@ namespace AILendTreasury.Services.Interfaces
 
         public Task<BalanceDTO> GetStartingBalance(DateTime today);
 
+        public Task<BalanceDTO> GetLatestBalance(DateTime today);
+
+        public Task<BalanceDTO> PrepareBalance(SalesTransactionDTO newTransaction);
     }
 }

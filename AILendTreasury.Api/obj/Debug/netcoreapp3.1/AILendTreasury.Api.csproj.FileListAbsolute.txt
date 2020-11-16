@@ -45,3 +45,9 @@ C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.
 C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\obj\Debug\netcoreapp3.1\AILendTreasury.Api.csproj.CoreCompileInputs.cache
 C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\obj\Debug\netcoreapp3.1\AILendTreasury.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\obj\Debug\netcoreapp3.1\scopedcss\bundle\AILendTreasury.Api.styles.css
+C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\Json.Net.dll
+C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
+C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\Nancy.dll
+C:\Users\henri\Desktop\Ailend Treasury\AilendTreasury.Api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

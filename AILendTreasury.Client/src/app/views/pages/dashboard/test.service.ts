@@ -5,6 +5,8 @@ import { formatDate } from '@angular/common';
 import date from 'src/assets/plugins/formvalidation/src/js/validators/date';
 import { CurrencyBalance } from 'src/app/core/_models/CurrencyBalance';
 
+var headerz = new HttpHeaders({'Content-Type': 'application/json'});
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,7 +36,31 @@ export class TestService {
       "SubmitedDate": new Date(),
       "Balance": JSON.stringify(newBalance),
     };
-    var headerz = new HttpHeaders({'Content-Type': 'application/json'});
+
     return this.http.post<any>("http://localhost:5000/api/balance/update/current", balanceDTO, {headers:headerz});
+  }
+
+  submitNewTransaction():Observable<any>
+  {
+    const newTransaction ={
+      SoldCurrency : "ALL",
+      BoughtCurrency: "USD",
+      SoldAmount:10000,
+      ExchangeRate: 0.91,
+      CreatedDate: new Date(),
+      Customer:"Henri Haka",
+      ApprovedBy:{ 
+        Id:2,
+        FirstName: "Genti",
+        LastName:"Zotaj",
+        Email:"asdada",
+        KeycloakId:"adada",
+        Department:"sales",
+        AutomaticTransactions:[],
+        ManualTransactions:[],
+        FXTransactions:[]
+      }
+    };
+    return this.http.post<any>("http://localhost:5000/api/transaction/new", newTransaction, {headers:headerz});
   }
 }

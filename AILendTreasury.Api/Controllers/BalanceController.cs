@@ -49,8 +49,20 @@ namespace AILendTreasury.Api.Controllers
             }
         }
 
-        //[HttpPost("get/latest")]
-        //public async Task<IActionResult> GetLatestDailyBalance()
+        [HttpGet("get/current")]
+        public async Task<IActionResult> GetCurrentPosition()
+        {
+            try
+            {
+                DateTime today = DateTime.Now;
+                BalanceDTO startingBalance = await _balanceService.GetLatestBalance(today);
+                return Ok(startingBalance);
+            }
+            catch
+            {
+                return BadRequest("The data has not been imported correctly from the database");
+            }
+        }
 
     }
 }

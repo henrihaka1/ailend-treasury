@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CurrencyBalance } from 'src/app/core/_models/CurrencyBalance';
-import { StartingPositionService } from './starting-position.service';
+import { PositionService } from './position.service';
 
 @Component({
   selector: 'ai-starting-position',
@@ -10,14 +10,33 @@ import { StartingPositionService } from './starting-position.service';
 export class StartingPositionComponent implements OnInit {
 
   startingBalance :CurrencyBalance[];
+  latestBalance: CurrencyBalance[];
+  differenceBalance: CurrencyBalance[];
 
-  constructor(private startingPositionService: StartingPositionService) { }
+  constructor(private PositionService: PositionService,private cd : ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.startingPositionService.getStartingBalance().subscribe(response => {
+      this.PositionService.getStartingBalance().subscribe(response => {
       this.startingBalance = JSON.parse(response.balance);
         console.log(this.startingBalance);
+        this.cd.detectChanges();
     });
+    this.getCurrentBalance();
+    setInterval(()=>{
+      this.getCurrentBalance();
+    }, 4000);
+  }
+
+  getCurrentBalance(){
+    this.PositionService.getCurrentBalance().subscribe(response => {
+      this.latestBalance = JSON.parse(response.balance);
+        console.log(this.latestBalance);
+        this.cd.detectChanges();
+    });
+  }
+
+  ngOnDestroy(){
+    
   }
 
 }

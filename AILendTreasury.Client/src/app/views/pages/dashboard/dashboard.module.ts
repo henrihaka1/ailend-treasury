@@ -8,6 +8,9 @@ import { CoreModule } from '../../../core/core.module';
 import { PartialsModule } from '../../partials/partials.module';
 import { DashboardComponent } from './dashboard.component';
 import { StartingPositionComponent } from './starting-position/starting-position.component';
+import { TransactionFilterComponent } from './transaction-filter/transaction-filter.component';
+import { SummaryComponent } from './summary/summary.component';
+import { TransactionLogComponent } from './transaction-log/transaction-log.component';
 
 @NgModule({
   imports: [
@@ -29,6 +32,9 @@ import { StartingPositionComponent } from './starting-position/starting-position
   declarations: [
     DashboardComponent,
     StartingPositionComponent,
+    TransactionFilterComponent,
+    SummaryComponent,
+    TransactionLogComponent,
   ]
 })
 export class DashboardModule {

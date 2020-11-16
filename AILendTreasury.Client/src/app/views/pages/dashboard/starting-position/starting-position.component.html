@@ -16,4 +16,14 @@
             </div>
         </div>
     </div>
+    <div class="amount-container">
+        <span class="amount-box__label">
+            Open Position
+        </span>
+        <div *ngFor="let item of latestBalance; index as i" class="amount-box">
+            <div class="amount-box__amount" [ngClass]="item.amount - startingBalance[i].amount<0 ?'text-danger' :'text-success'">
+               {{item.amount - startingBalance[i].amount}}
+            </div>
+        </div>
+    </div>
 </div>

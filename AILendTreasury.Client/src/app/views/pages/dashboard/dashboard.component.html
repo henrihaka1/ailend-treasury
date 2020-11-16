@@ -1,9 +1,8 @@
 <ai-starting-position></ai-starting-position>
 <div class="container">
 	<div class="row">
-		This works!
-		<button>TEST</button>
 		<button (click)="submitNewBalance()">Submit</button>
+		<button (click)="submitNewTransaction()">Transaction</button>
 	</div>
 	<div *ngIf="showBalance">
 		<div *ngFor="let item of latestBalance; index as i">
@@ -13,3 +12,4 @@
 		</div>
 	</div>
 </div>
+<ai-transaction-log></ai-transaction-log>

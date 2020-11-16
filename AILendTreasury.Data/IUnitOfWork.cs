@@ -10,6 +10,8 @@ namespace AILendTreasury.Data
         ICurrenciesRepository Currencies { get;}
         IBalanceRepository Balances { get; }
         IPositionRepository Positions { get; }
+        IStaffRepository StaffMembers { get; }
+        IAutomaticRepository AutomaticTransactions { get; }
         int SaveChanges();
     }
 }

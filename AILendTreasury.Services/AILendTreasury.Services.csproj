@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.ServiceRegistration.Dynamic" Version="2.0.0" />
+    <PackageReference Include="Json.Net" Version="1.0.23" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

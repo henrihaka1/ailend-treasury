@@ -2,6 +2,8 @@
 using AILendTreasury.Data.Repositories.Interfaces;
 using System.Threading.Tasks;
 using System.Linq;
+using System;
+using System.Collections.Generic;
 
 namespace AILendTreasury.Data.Repositories.Implementations
 {
@@ -13,9 +15,14 @@ namespace AILendTreasury.Data.Repositories.Implementations
             _context = context;
         }
 
+        public async Task<Balance> GetLatestBalanceByPositionId(long id)
+        {
+            return _context.Balances.Where(x => x.Position.Id == id).OrderByDescending(x => x.Id).FirstOrDefault();
+        }
+
         public async Task<Balance> GetStartingBalanceByPositionId(long id)
         {
-            return _context.Balances.Where(x=>x.Position.Id ==id).OrderBy(x=>x.Position.Id).FirstOrDefault();
+            return _context.Balances.Where(x=>x.Position.Id ==id).OrderBy(x=>x.Id).FirstOrDefault();
         }
     }
 }

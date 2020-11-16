@@ -7,12 +7,17 @@ const STARTING_POSITION_URL = "http://localhost:5000/api/balance";
 @Injectable({
   providedIn: 'root'
 })
-export class StartingPositionService {
+export class PositionService {
 
   constructor(private http:HttpClient) { }
 
   getStartingBalance():Observable<any>{
     const URL = STARTING_POSITION_URL + '/get/starting';
+    return this.http.get<any>(URL);
+  }
+
+  getCurrentBalance():Observable<any>{
+    const URL = STARTING_POSITION_URL + '/get/current';
     return this.http.get<any>(URL);
   }
 }

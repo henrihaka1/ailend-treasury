@@ -35,6 +35,14 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  submitNewTransaction()
+  {
+    this.service.submitNewTransaction().subscribe(response => 
+      {
+        console.log(JSON.parse(response.balance));
+      });
+  }
+
   submitNewBalance(){
     this.service.submitNewBalance().subscribe(response => 
       {
