@@ -10,7 +10,7 @@ import { DashboardComponent } from './dashboard.component';
 import { StartingPositionComponent } from './starting-position/starting-position.component';
 import { TransactionFilterComponent } from './transaction-filter/transaction-filter.component';
 import { SummaryComponent } from './summary/summary.component';
-import { TransactionLogComponent } from './transaction-log/transaction-log.component';
+import { TransactionLogComponent } from './transaction-filter/transaction-log/transaction-log.component';
 
 @NgModule({
   imports: [

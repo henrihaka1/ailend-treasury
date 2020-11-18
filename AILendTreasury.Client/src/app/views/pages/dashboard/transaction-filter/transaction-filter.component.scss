@@ -3,10 +3,32 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-gap:1rem;
+    align-items: center;
     margin-bottom: 30px;
-    .filter-box{
-        color: white;
-        background-color: rgb(0, 0, 77);
-        font-size: 15px;
+    .container{
+        padding: 0;
+        height: 100%;
+        .filter-box{
+            width: 100%;
+            display: block;
+            color: white;
+            background-color: rgb(0, 0, 77);
+            border: 3px solid rgb(0, 0, 77);
+            font-size: 15px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 10px;
+            padding-left: 10px;
+            font-size: 15px;
+            border-radius: 10px;
+            &:hover{
+                background-color: rgb(168, 168, 255);
+                border: 3px solid rgb(29, 29, 128);
+                transition: 0.3s ease-in;
+                color: rgb(29, 29, 128);
+                width: 100%;
+                font-size: 15px;
+            }
+        }
     }
 }

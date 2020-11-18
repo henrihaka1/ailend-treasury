@@ -6,5 +6,6 @@ export class Transaction{
     boughtAmount:number;
     createdDate:Date;
     customer:string;
+    type:string;
     approvedBy:any;
 }

@@ -1,0 +1,43 @@
+<div class="row wrapper" *ngIf="firstFilter != '' && secondFilter!=''" >
+    <div class="col-md-6 text-center">
+        <div class="transaction-label__sold">
+            Sold {{firstFilter}}
+        </div>
+        <div class="row transaction-item__sold" *ngFor="let item of soldTransactions">
+            <span>{{item.customer}} </span>
+            <span>{{item.soldCurrency}}</span>
+            <span>{{formatNumber(item.soldAmount.toFixed(2))}}</span>
+            <span>{{item.boughtCurrency}}</span>
+            <span>{{item.exchangeRate}}</span>
+            <span>{{formatNumber(item.boughtAmount.toFixed(2))}}</span>
+            <div class="date">
+                {{item.createdDate | date: "shortTime"}}
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <div class="transaction-label__bought">
+            Bought {{firstFilter}}
+        </div>
+        <div class="row transaction-item__bought" *ngFor="let item of boughtTransactions">
+            <span>{{item.customer}} </span>
+            <span>{{item.soldCurrency}}</span>
+            <span>{{formatNumber(item.soldAmount.toFixed(2))}}</span>
+            <span>{{item.boughtCurrency}}</span>
+            <span>{{item.exchangeRate}}</span>
+            <span>{{formatNumber(item.boughtAmount.toFixed(2))}}</span>
+            <div class="date">
+                {{item.createdDate | date: "shortTime"}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row hint text-center" *ngIf="firstFilter == '' && secondFilter==''">
+    <div class="col-md-12">
+        <p class="anim-typewriter line">Click one of the main combinations or get started with your own!</p> 
+    </div>
+</div>
+
+
+

@@ -16,6 +16,12 @@ namespace AILendTreasury.Data.Repositories.Implementations
             _context = context;
         }
 
+        public async Task<List<Automatic>> GetAllTransactions(DateTime targetDate)
+        {
+            return _context.AutomaticTransactions.Where(x =>
+            x.CreatedDate.Year == targetDate.Year && x.CreatedDate.Month == targetDate.Month && x.CreatedDate.Day == targetDate.Day).ToList();
+        }
+
         public async Task<List<Automatic>> GetAllTransactionsByFilter(string firstCurrency, string secondCurrency)
         {
             return _context.AutomaticTransactions.Where(x => 

@@ -15,5 +15,6 @@ namespace AILendTreasury.Services.DTO
         public DateTime CreatedDate { get; set; }
         public string Customer { get; set; }
         public Staff ApprovedBy { get; set; }
+        public string Type { get; set; }
     }
 }

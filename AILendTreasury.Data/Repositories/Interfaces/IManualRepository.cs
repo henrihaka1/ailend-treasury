@@ -8,6 +8,8 @@ namespace AILendTreasury.Data.Repositories.Interfaces
 {
     public interface IManualRepository : IRepository<Manual>
     {
+        public Task<List<Manual>> GetAllTransactions(DateTime targetDate);
+
         public Task<List<Manual>> GetAllTransactionsByFilter(string firstCurrency, string secondCurrency);
     }
 }

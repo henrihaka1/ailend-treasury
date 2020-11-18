@@ -1,8 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { formatDate } from '@angular/common';
-import date from 'src/assets/plugins/formvalidation/src/js/validators/date';
 import { CurrencyBalance } from 'src/app/core/_models/CurrencyBalance';
 
 var headerz = new HttpHeaders({'Content-Type': 'application/json'});
@@ -24,7 +22,7 @@ export class TestService {
   submitNewBalance() :Observable<any>{
     const newBalance:CurrencyBalance[] = [
       {label:"ALL", amount:10000000},
-      {label:"EUR", amount:2000000},
+      {label:"EUR", amount: 2000000},
       {label:"USD", amount: 3000000},
       {label:"GDP", amount: 2000000},
       {label:"CHF", amount: 2000000},
@@ -42,8 +40,8 @@ export class TestService {
 
   submitNewTransaction():Observable<any>
   {
-    const newTransaction ={
-      SoldCurrency : "ALL",
+    const newTransaction = {
+      SoldCurrency : "GDP",
       BoughtCurrency: "USD",
       SoldAmount:10000,
       ExchangeRate: 0.91,

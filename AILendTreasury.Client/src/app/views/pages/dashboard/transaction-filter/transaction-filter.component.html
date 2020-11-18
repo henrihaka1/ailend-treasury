@@ -1,32 +1,69 @@
 <div class="wrapper">
-    <div></div>
-    <a href="javascript:;" class="filter-box">
-        EUR-ALL
-    </a>
-
-    <a href="javascript:;" class="filter-box">
-        USD-EUR
-    </a>
-
-    <a href="javascript:;" class="filter-box">
-        USD-ALL
-    </a>
-
-    <a href="javascript:;" class="filter-box">
-        GDP-LEK
-    </a>
-
-    <a href="javascript:;" class="filter-box">
-        GDP-USD
-    </a>
-
-    <a href="javascript:;" class="filter-box">
-        EUR-GDP
-    </a>
-
-    <a href="javascript:;" class="filter-box">
-        Custom
-    </a>
-
-
+    <div class="container text-center">
+        Open Balance
+    </div>
+    <div class="container text-center">
+        <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('EUR', 'ALL')">
+            EUR-ALL
+        </a>
+        <div>
+            Open: {{transactionLog.getOpen('EUR', 'ALL')}}<br>
+            P/L: {{transactionLog.getPL('EUR', 'ALL')}}
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('USD','EUR')">
+            USD-EUR
+        </a>
+        <div>
+            Open: {{transactionLog.getOpen('USD','EUR')}}<br>
+            P/L: {{transactionLog.getPL('USD','EUR')}}
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('USD', 'ALL')">
+            USD-ALL
+        </a>
+        <div>
+            Open: {{transactionLog.getOpen('USD','ALL')}}<br>
+            P/L: {{transactionLog.getPL('USD','ALL')}}
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('GDP', 'ALL')">
+            GDP-ALL
+        </a>
+        <div>
+            Open: {{transactionLog.getOpen('GDP', 'ALL')}}<br>
+            P/L: {{transactionLog.getPL('GDP', 'ALL')}}
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('GDP', 'USD')">
+            GDP-USD
+        </a>
+        <div>
+            Open: {{transactionLog.getOpen('GDP', 'USD')}}<br>
+            P/L: {{transactionLog.getPL('GDP', 'USD')}}
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('EUR', 'GDP')">
+            EUR-GDP
+        </a>
+        <div>
+            Open: {{transactionLog.getOpen('EUR', 'GDP')}} <br>
+            P/L: {{transactionLog.getPL('EUR', 'GDP')}}
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="javascript:;" class="filter-box text-center">
+            Custom
+        </a>
+        <div>
+            asdasd
+        </div>
+    </div>
 </div>
+<ai-transaction-log #transactionLog [firstFilter]="firstCurrency" [secondFilter]="secondCurrency"></ai-transaction-log>
+

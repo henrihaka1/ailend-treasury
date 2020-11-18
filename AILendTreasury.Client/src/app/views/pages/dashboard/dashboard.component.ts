@@ -1,7 +1,5 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { fromJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
-import { BalanceDTO } from 'src/app/core/_models/BalanceDTO';
 import { CurrencyBalance } from 'src/app/core/_models/CurrencyBalance';
 import { TestService } from './test.service';
 
@@ -23,7 +21,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllCurrencies();
+    //this.getAllCurrencies();
   }
 
   getAllCurrencies()

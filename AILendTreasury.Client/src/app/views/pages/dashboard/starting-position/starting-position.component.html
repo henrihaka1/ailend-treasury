@@ -10,7 +10,7 @@
     </div>
     <div *ngFor="let item of startingBalance" class="amount-box text-center">
         <div>
-            {{formatNumber(item.amount.toFixed(2)) }}
+            {{formatNumber(item.amount.toFixed(2), false) }}
         </div>
     </div>
     <div class="title text-center">
@@ -18,7 +18,7 @@
     </div>
     <div *ngFor="let item of latestBalance; index as i" class="amount-box text-center">
         <div [ngClass]="item.amount - startingBalance[i].amount<0 ?'text-danger' :'text-success'">
-            {{formatNumber((item.amount - startingBalance[i].amount).toFixed(2))}}
+            {{formatNumber((item.amount - startingBalance[i].amount).toFixed(2), true)}}
         </div>
     </div>
 </div>

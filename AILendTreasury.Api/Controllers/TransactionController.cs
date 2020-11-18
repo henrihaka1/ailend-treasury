@@ -1,6 +1,7 @@
 ﻿using AILendTreasury.Services.DTO;
 using AILendTreasury.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace AILendTreasury.Api.Controllers
@@ -31,9 +32,17 @@ namespace AILendTreasury.Api.Controllers
         }
 
         [HttpGet("sales/get/{curr1}/{curr2}")]
-        public async Task<IActionResult> GetTransactionsByFilter(string curr1, string curr2)
+        public async Task<IActionResult> GetTransactionsByFilter(string curr1, string curr2, [FromQuery] string targetDate)
         {
-            return Ok(await _salesTransactionService.GetSalesTransactionsByFilter(curr1, curr2));
+            DateTime dt = DateTime.Parse(targetDate);
+            return Ok(await _salesTransactionService.GetSalesTransactionsByFilter(curr1, curr2, dt));
+        }
+
+        [HttpGet("sales/get")]
+        public async Task<IActionResult> GetAllTransactions([FromQuery] string targetDate)
+        {
+            DateTime dt = DateTime.Parse(targetDate);
+            return Ok(await _salesTransactionService.GetSalesTransactions(dt));
         }
     }
 }
