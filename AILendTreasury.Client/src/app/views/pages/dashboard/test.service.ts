@@ -38,27 +38,27 @@ export class TestService {
     return this.http.post<any>("http://localhost:5000/api/balance/update/current", balanceDTO, {headers:headerz});
   }
 
-  submitNewTransaction():Observable<any>
+  submitNewTransaction(newTransaction):Observable<any>
   {
-    const newTransaction = {
-      SoldCurrency : "GDP",
-      BoughtCurrency: "USD",
-      SoldAmount:10000,
-      ExchangeRate: 0.91,
-      CreatedDate: new Date(),
-      Customer:"Henri Haka",
-      ApprovedBy:{ 
-        Id:2,
-        FirstName: "Genti",
-        LastName:"Zotaj",
-        Email:"asdada",
-        KeycloakId:"adada",
-        Department:"sales",
-        AutomaticTransactions:[],
-        ManualTransactions:[],
-        FXTransactions:[]
-      }
-    };
+    // const newTransaction = {
+    //   SoldCurrency : "ALL",
+    //   BoughtCurrency: "EUR",
+    //   SoldAmount:10000,
+    //   ExchangeRate: 0.91,
+    //   CreatedDate: new Date(),
+    //   Customer:"Henri Haka",
+    //   ApprovedBy:{ 
+    //     Id:2,
+    //     FirstName: "Genti",
+    //     LastName:"Zotaj",
+    //     Email:"asdada",
+    //     KeycloakId:"adada",
+    //     Department:"sales",
+    //     AutomaticTransactions:[],
+    //     ManualTransactions:[],
+    //     FXTransactions:[]
+    //   }
+    // };
     return this.http.post<any>("http://localhost:5000/api/transaction/new", newTransaction, {headers:headerz});
   }
 }

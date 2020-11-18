@@ -7,6 +7,41 @@
     min-height: 400px;
     border-radius: 30px;
     border: 3px solid rgb(221, 218, 203);
+    position: relative;
+    .summary-sold{
+        position: absolute;
+        bottom: 20px;
+        background-color:  rgb(255, 166, 0);
+        color: white;
+        border-radius: 20px;
+        display: block;
+        padding-left: 10px;
+        padding-right: 10px;
+        left: 13%;
+        span:not(:last-child){
+            border-right:2px solid rgb(131, 85, 0);
+            padding-left: 5px;
+            padding-right: 5px;
+            line-height: 40px;
+        }
+    }
+    .summary-bought{
+        position: absolute;
+        bottom: 20px;
+        background-color: rgb(0, 0, 100);
+        color: white;
+        border-radius: 20px;
+        display: block;
+        padding-left: 10px;
+        padding-right: 10px;
+        left: 13%;
+        span:not(:last-child){
+            border-right:2px solid rgb(255, 255, 255);
+            padding-left: 5px;
+            padding-right: 5px;
+            line-height: 40px;
+        }
+    }
     .transaction-label__sold{
         font-size: 15px;
         color: rgb(255, 255, 255);
@@ -81,6 +116,9 @@
     }
 
 }
+
+
+
 
 .hint{
     height: 300px;

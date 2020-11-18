@@ -11,6 +11,8 @@ import { StartingPositionComponent } from './starting-position/starting-position
 import { TransactionFilterComponent } from './transaction-filter/transaction-filter.component';
 import { SummaryComponent } from './summary/summary.component';
 import { TransactionLogComponent } from './transaction-filter/transaction-log/transaction-log.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -27,6 +29,8 @@ import { TransactionLogComponent } from './transaction-filter/transaction-log/tr
     NgbDropdownModule,
     NgbTabsetModule,
     NgbTooltipModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   declarations: [

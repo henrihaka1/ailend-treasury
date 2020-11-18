@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="latestBalance !== undefined && startingBalance!==undefined">
     <div></div>
     <div *ngFor="let item of startingBalance" class="label-box text-center">
         <div>

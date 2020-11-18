@@ -6,62 +6,87 @@
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('EUR', 'ALL')">
             EUR-ALL
         </a>
-        <div>
-            Open: {{transactionLog.getOpen('EUR', 'ALL')}}<br>
-            P/L: {{transactionLog.getPL('EUR', 'ALL')}}
+        <div *ngIf="firstCurrency=='EUR' && secondCurrency=='ALL'" class="details">
+            Open: {{computeOpen('EUR', 'ALL')}}<br>
+            P/L: {{computePL('EUR', 'ALL')}}
         </div>
     </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('USD','EUR')">
             USD-EUR
         </a>
-        <div>
-            Open: {{transactionLog.getOpen('USD','EUR')}}<br>
-            P/L: {{transactionLog.getPL('USD','EUR')}}
+        <div *ngIf="firstCurrency=='USD' && secondCurrency=='EUR'" class="details">
+            Open: {{computeOpen('USD', 'EUR')}}<br>
+            P/L: {{computePL('USD', 'EUR')}} 
         </div>
     </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('USD', 'ALL')">
             USD-ALL
         </a>
-        <div>
-            Open: {{transactionLog.getOpen('USD','ALL')}}<br>
-            P/L: {{transactionLog.getPL('USD','ALL')}}
+        <div *ngIf="firstCurrency=='USD' && secondCurrency=='ALL'" class="details">
+            Open: {{computeOpen('USD', 'ALL')}}<br>
+            P/L: {{computePL('USD', 'ALL')}} 
         </div>
     </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('GDP', 'ALL')">
             GDP-ALL
         </a>
-        <div>
-            Open: {{transactionLog.getOpen('GDP', 'ALL')}}<br>
-            P/L: {{transactionLog.getPL('GDP', 'ALL')}}
+        <div *ngIf="firstCurrency=='GDP' && secondCurrency=='ALL'" class="details">
+            Open: {{computeOpen('GDP', 'ALL')}}<br>
+            P/L: {{computePL('GDP', 'ALL')}} 
         </div>
     </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('GDP', 'USD')">
             GDP-USD
         </a>
-        <div>
-            Open: {{transactionLog.getOpen('GDP', 'USD')}}<br>
-            P/L: {{transactionLog.getPL('GDP', 'USD')}}
+        <div *ngIf="firstCurrency=='GDP' && secondCurrency=='USD'" class="details">
+            Open: {{computeOpen('GDP', 'USD')}}<br>
+            P/L: {{computePL('GDP', 'USD')}}
         </div>
     </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('EUR', 'GDP')">
             EUR-GDP
         </a>
-        <div>
-            Open: {{transactionLog.getOpen('EUR', 'GDP')}} <br>
-            P/L: {{transactionLog.getPL('EUR', 'GDP')}}
+        <div *ngIf="firstCurrency=='EUR' && secondCurrency=='GDP'" class="details">
+            Open: {{computeOpen('EUR', 'GDP')}}<br>
+            P/L: {{computePL('EUR', 'GDP')}}
         </div>
     </div>
     <div class="container text-center">
-        <a href="javascript:;" class="filter-box text-center">
+        <a href="javascript:;" class="filter-box text-center" (click)="showCustom = !showCustom">
             Custom
         </a>
-        <div>
-            asdasd
+        <div class="details" *ngIf="showCustom">
+            <mat-form-field appearance="fill">
+            <mat-label>First currency</mat-label>
+            <mat-select>
+                <mat-option value="ALL">ALL</mat-option>
+                <mat-option value="EUR">EUR</mat-option>
+                <mat-option value="USD">USD</mat-option>
+                <mat-option value="GDP">GDP</mat-option>
+                <mat-option value="CAD">CAD</mat-option>
+                <mat-option value="CHF">CHF</mat-option>
+                <mat-option value="SGD">SGD</mat-option>
+                <mat-option value="AUD">AUD</mat-option>
+            </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+            <mat-label>Second currency</mat-label>
+            <mat-select matNativeControl required>
+                <mat-option value="ALL">ALL</mat-option>
+                <mat-option value="EUR">EUR</mat-option>
+                <mat-option value="USD">USD</mat-option>
+                <mat-option value="GDP">GDP</mat-option>
+                <mat-option value="CAD">CAD</mat-option>
+                <mat-option value="CHF">CHF</mat-option>
+                <mat-option value="SGD">SGD</mat-option>
+                <mat-option value="AUD">AUD</mat-option>
+            </mat-select>
+            </mat-form-field>
         </div>
     </div>
 </div>
