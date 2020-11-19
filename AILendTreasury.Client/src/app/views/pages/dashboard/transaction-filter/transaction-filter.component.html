@@ -1,64 +1,62 @@
-<div class="wrapper">
-    <div class="container text-center">
-        Open Balance
-    </div>
+<div class="wrapper" style="padding-top: 20px !important;">
+    <div></div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('EUR', 'ALL')">
-            EUR-ALL
+            <b>EUR-ALL</b>
         </a>
         <div *ngIf="firstCurrency=='EUR' && secondCurrency=='ALL'" class="details">
-            Open: {{computeOpen('EUR', 'ALL')}}<br>
-            P/L: {{computePL('EUR', 'ALL')}}
+            Open: <b>{{computeOpen('EUR', 'ALL')}}</b><br>
+            P/L: <b>{{computePL('EUR', 'ALL')}}</b>
         </div>
     </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('USD','EUR')">
-            USD-EUR
+            <b>USD-EUR</b>
         </a>
         <div *ngIf="firstCurrency=='USD' && secondCurrency=='EUR'" class="details">
-            Open: {{computeOpen('USD', 'EUR')}}<br>
-            P/L: {{computePL('USD', 'EUR')}} 
+            Open: <b>{{computeOpen('USD', 'EUR')}}</b><br>
+            P/L: <b>{{computePL('USD', 'EUR')}}</b> 
         </div>
     </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('USD', 'ALL')">
-            USD-ALL
+            <b>USD-ALL</b>
         </a>
         <div *ngIf="firstCurrency=='USD' && secondCurrency=='ALL'" class="details">
-            Open: {{computeOpen('USD', 'ALL')}}<br>
-            P/L: {{computePL('USD', 'ALL')}} 
+            Open: <b>{{computeOpen('USD', 'ALL')}}</b><br>
+            P/L: <b>{{computePL('USD', 'ALL')}} </b>
         </div>
     </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('GDP', 'ALL')">
-            GDP-ALL
+            <b>GDP-ALL</b>
         </a>
         <div *ngIf="firstCurrency=='GDP' && secondCurrency=='ALL'" class="details">
-            Open: {{computeOpen('GDP', 'ALL')}}<br>
-            P/L: {{computePL('GDP', 'ALL')}} 
+            Open: <b>{{computeOpen('GDP', 'ALL')}}</b><br>
+            P/L: <b>{{computePL('GDP', 'ALL')}}</b> 
         </div>
     </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('GDP', 'USD')">
-            GDP-USD
+            <b>GDP-USD</b>
         </a>
         <div *ngIf="firstCurrency=='GDP' && secondCurrency=='USD'" class="details">
-            Open: {{computeOpen('GDP', 'USD')}}<br>
-            P/L: {{computePL('GDP', 'USD')}}
+            Open: <b>{{computeOpen('GDP', 'USD')}}</b><br>
+            P/L: <b>{{computePL('GDP', 'USD')}}</b>
         </div>
     </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('EUR', 'GDP')">
-            EUR-GDP
+            <b>EUR-GDP</b>
         </a>
         <div *ngIf="firstCurrency=='EUR' && secondCurrency=='GDP'" class="details">
-            Open: {{computeOpen('EUR', 'GDP')}}<br>
-            P/L: {{computePL('EUR', 'GDP')}}
+            Open: <b>{{computeOpen('EUR', 'GDP')}}</b><br>
+            P/L: <b>{{computePL('EUR', 'GDP')}}</b>
         </div>
     </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="showCustom = !showCustom">
-            Custom
+            <b>Custom</b>
         </a>
         <div class="details" *ngIf="showCustom">
             <mat-form-field appearance="fill">

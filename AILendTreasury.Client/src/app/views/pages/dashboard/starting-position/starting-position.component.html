@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="latestBalance !== undefined && startingBalance!==undefined">
+<div class="wrapper" style="padding: 0 !important;" *ngIf="latestBalance !== undefined && startingBalance!==undefined">
     <div></div>
     <div *ngFor="let item of startingBalance" class="label-box text-center">
         <div>
@@ -17,7 +17,7 @@
         Open position
     </div>
     <div *ngFor="let item of latestBalance; index as i" class="amount-box text-center">
-        <div [ngClass]="item.amount - startingBalance[i].amount<0 ?'text-danger' :'text-success'">
+        <div [ngClass]="{'text-danger':item.amount - startingBalance[i].amount<0, 'text-success':item.amount - startingBalance[i].amount>0,'': item.amount - startingBalance[i].amount==0} ">
             {{formatNumber((item.amount - startingBalance[i].amount).toFixed(2), true)}}
         </div>
     </div>

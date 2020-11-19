@@ -1,5 +1,5 @@
 // Angular
-import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 // RxJS
 import { Subscription } from 'rxjs';
 // Layout
@@ -74,4 +74,5 @@ export class Subheader1Component implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy(): void {
     this.subscriptions.forEach(sb => sb.unsubscribe());
   }
+
 }

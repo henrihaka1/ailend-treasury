@@ -13,6 +13,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { TransactionLogComponent } from './transaction-filter/transaction-log/transaction-log.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { MatSelectModule } from '@angular/material/select';
     NgbTabsetModule,
     NgbTooltipModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonModule
   ],
   providers: [],
   declarations: [

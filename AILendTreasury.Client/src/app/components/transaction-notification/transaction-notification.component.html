@@ -1,0 +1,25 @@
+<div class="notification">
+    <aside class="wrapper" style="padding: 0 !important;" *ngFor="let messageIterator of messages" #messageToHide>
+      <div [ngClass]="messageIterator.manual ?'gradient-line__blink' :'gradient-line' "></div>
+      <div class="notification-body">
+        <span class="notification-text">Customer:  <b>{{messageIterator.transaction.customer}}</b></span> <br>
+        <span class="notification-text">Sold:  <b>{{formatNumber(messageIterator.transaction.soldAmount.toFixed(2))}}</b></span>
+        <span class="notification-text"><b>{{messageIterator.transaction.soldCurrency}}</b></span> <br>
+        <span class="notification-text" *ngIf="!messageIterator.manual">Bought:  <b>{{formatNumber(messageIterator.transaction.boughtAmount.toFixed(2))}}</b></span>
+        <span class="notification-text"><b>{{messageIterator.transaction.boughtCurrency}}</b></span> <br>
+        <span class="notification-text">Exchange Rate: 
+          <span *ngIf="!messageIterator.manual">
+            <b>{{formatNumber(messageIterator.transaction.exchangeRate.toFixed(2))}}</b>
+          </span>
+          <div *ngIf="messageIterator.manual" class="manual-input">
+            <input type="text" [(ngModel)]="Input" class="text-input" aiCheckNumber>
+          </div>
+        </span>
+        <!-- <button class="close" mat-icon-button color="accent" (click)="removeNotification(messageIterator)" aria-label="Dissmis">
+          <mat-icon>clear</mat-icon>
+        </button> -->
+      </div>
+      <button *ngIf="!messageIterator.manual" mat-button class="undo" (click)="removeNotification(messageIterator)">Mark as read</button>
+      <button *ngIf="messageIterator.manual" mat-button class="undo" (click)="insertTransaction(messageIterator.transaction)">Approve</button>
+    </aside>
+</div>

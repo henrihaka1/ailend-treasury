@@ -1,25 +1,31 @@
 .wrapper
 {
+    transition: 2s ease;
+    background-color: #fbfdff;
+    background-image: url('../../../../../../assets/media/bg/backgroudn.png');
+    color: black;
+    border: 2px solid #eaeaea;
     margin-left: 150px;
     margin-right: 3px;
     padding: 0;
-    background-color: rgb(255, 255, 232);
     min-height: 400px;
+    height: fit-content;
+    -webkit-box-shadow: 5px 9px 20px 2px rgba(0,0,0,0.1); 
+    box-shadow: 5px 9px 20px 2px rgba(0,0,0,0.1);
     border-radius: 30px;
-    border: 3px solid rgb(221, 218, 203);
     position: relative;
     .summary-sold{
         position: absolute;
         bottom: 20px;
-        background-color:  rgb(255, 166, 0);
-        color: white;
+        background-color:  rgb(230, 230, 230);
+        color: black;
         border-radius: 20px;
         display: block;
-        padding-left: 10px;
-        padding-right: 10px;
-        left: 13%;
+        padding-left: 20px;
+        padding-right: 20px;
+        left: 9%;
         span:not(:last-child){
-            border-right:2px solid rgb(131, 85, 0);
+            border-right:2px solid  rgb(255, 255, 255);
             padding-left: 5px;
             padding-right: 5px;
             line-height: 40px;
@@ -28,13 +34,13 @@
     .summary-bought{
         position: absolute;
         bottom: 20px;
-        background-color: rgb(0, 0, 100);
+        background-color: rgb(31, 31, 31);
         color: white;
         border-radius: 20px;
         display: block;
-        padding-left: 10px;
-        padding-right: 10px;
-        left: 13%;
+        padding-left: 20px;
+        padding-right: 20px;
+        left: 9%;
         span:not(:last-child){
             border-right:2px solid rgb(255, 255, 255);
             padding-left: 5px;
@@ -44,38 +50,39 @@
     }
     .transaction-label__sold{
         font-size: 15px;
-        color: rgb(255, 255, 255);
+        color: black;
         padding-top: 5px;
         padding-bottom: 5px;
-        background-color: rgb(255, 166, 0);
-        border: 2px solid rgb(192, 125, 0);
+        width: 150px;
+        background-color: rgb(230, 230, 230);
+        //border: 2px solid rgb(255, 208, 0);
         border-radius: 10px;
-        max-width: 100px;
         margin: auto;
         margin-top: 20px;
         margin-bottom: 20px;
     }
     .transaction-item__sold{
-        background-color: rgb(255, 166, 0);
-        border: 2px solid rgb(192, 125, 0);
+        background-color: rgb(230, 230, 230);
+        //border: 2px solid rgb(255, 208, 0);
         //padding:10px;
         margin: auto;
-        margin-bottom: 3px;
+        margin-bottom: 10px;
         border-radius: 10px;
-        color: white;
-        max-width: 400px;
+        color: rgb(0, 0, 0);
+        max-width: 430px;
         position: relative;
         span{
-            border-right:2px solid rgb(192, 125, 0);
+            border-right:2px solid rgb(255, 255, 255);
             padding-left: 5px;
             padding-right: 5px;
-            line-height: 30px;
+            line-height: 35px;
         }
         .date{
             position: absolute;
             right: 2px;
             bottom: 1px;
-            font-size: 12px;
+            font-size: 11px;
+            padding-left: 10px;
         }
     }
     .transaction-label__bought{
@@ -83,35 +90,36 @@
         color: rgb(255, 255, 255);
         padding-top: 5px;
         padding-bottom: 5px;
-        background-color: rgb(0, 0, 100);
-        border: 2px solid rgb(0, 1, 80);
+        padding-left: 15px;
+        padding-right:15px;
+        background-color: rgb(31, 31, 31);
         border-radius: 10px;
-        max-width: 100px;
+        width: 150px;
         margin: auto;
         margin-top: 20px;
         margin-bottom: 20px;
     }
     .transaction-item__bought{
-        background-color: rgb(0, 0, 100);
-        border: 2px solid rgb(0, 1, 80);
+        background-color: rgb(31, 31, 31);
         color: white;
         margin: auto;
-        margin-bottom: 3px;
+        margin-bottom: 10px;
         border-radius: 10px;
         color: white;
-        max-width: 400px;
+        max-width: 430px;
         position: relative;
         .date{
             position: absolute;
             right: 2px;
             bottom: 1px;
-            font-size: 12px;
+            font-size: 11px;
+            padding-left: 10px;
         }
         span{
             border-right:2px solid rgb(255, 255, 255);
             padding-left: 5px;
             padding-right: 5px;
-            line-height: 30px;
+            line-height: 35px;
         }
     }
 
@@ -159,5 +167,41 @@
 	}
 	to {
 		border-right-color: transparent;
+	}
+}
+
+@keyframes show{
+	from {
+		opacity: 0;
+	}
+	to {
+        opacity: 1;
+	}
+}
+
+// Custom Scroll Bar
+.transaction-container{
+	/* width */
+	&::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		background-color: white;
+		border-radius: 10px;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background-color: rgba($color: #c2c2c2, $alpha: 0.3);
+		border-radius: 10px;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background-color: rgba($color: #c2c2c2, $alpha: 0.5);
+		cursor: pointer !important;
 	}
 }

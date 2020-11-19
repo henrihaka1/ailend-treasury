@@ -1,53 +1,57 @@
-<div class="row wrapper" *ngIf="firstFilter != '' && secondFilter!=''" >
+<div class="row wrapper" style="padding: 20px !important;" *ngIf="firstFilter != '' && secondFilter!=''" [@fadeInOut]>
     <div class="col-md-6 text-center">
         <div class="transaction-label__sold">
-            Sold {{firstFilter}}
+            <b>BUY</b>
         </div>
-        <div class="row transaction-item__sold" *ngFor="let item of soldTransactions.transactions">
-            <span>{{item.customer}} </span>
-            <span>{{item.soldCurrency}}</span>
-            <span>{{formatNumber(item.soldAmount.toFixed(2))}}</span>
-            <span>{{item.boughtCurrency}}</span>
-            <span>{{item.exchangeRate}}</span>
-            <span>{{formatNumber(item.boughtAmount.toFixed(2))}}</span>
-            <div class="date">
-                {{item.createdDate | date: "shortTime"}}
+        <div style="overflow-y: scroll; height: 350px;" class="transaction-container">
+            <div class="row transaction-item__sold" *ngFor="let item of soldTransactions.transactions">
+                <span><b>{{item.customer}}</b> </span>
+                <span><b>{{item.soldCurrency}}</b></span>
+                <span><b>{{formatNumber(item.soldAmount.toFixed(2))}}</b></span>
+                <span><b>{{item.boughtCurrency}}</b></span>
+                <span><b>{{item.exchangeRate}}</b></span>
+                <span><b>{{formatNumber(item.boughtAmount.toFixed(2))}}</b></span>
+                <div class="date">
+                    <b>{{item.createdDate | date: "shortTime"}}</b>
+                </div>
             </div>
         </div>
-        <br><br>
+        <br><br><br><br>
         <div class="summary-sold">
-            <span>Total Sold: {{formatNumber(soldTransactions.sumSold.toFixed(2))}}</span>
-            <span>Avg. Rate: {{formatNumber(soldTransactions.avgRate.toFixed(2))}}</span>
-            <span style="padding-left: 5px;">Total Bought: {{formatNumber(soldTransactions.sumBought.toFixed(2))}}</span>
+            <span>Total Sold: <b>{{formatNumber(soldTransactions.sumSold.toFixed(2))}}</b></span>
+            <span>Avg. Rate: <b>{{formatNumber(soldTransactions.avgRate.toFixed(2))}}</b></span>
+            <span style="padding-left: 5px;">Total Bought: <b>{{formatNumber(soldTransactions.sumBought.toFixed(2))}}</b></span>
         </div>
     </div>
     <div class="col-md-6 text-center">
         <div class="transaction-label__bought">
-            Sold {{secondFilter}}
+            <b>SELL</b>
         </div>
-        <div class="row transaction-item__bought" *ngFor="let item of boughtTransactions.transactions">
-            <span>{{item.customer}}</span>
-            <span>{{item.soldCurrency}}</span>
-            <span>{{formatNumber(item.soldAmount.toFixed(2))}}</span>
-            <span>{{item.boughtCurrency}}</span>
-            <span>{{item.exchangeRate}}</span>
-            <span>{{formatNumber(item.boughtAmount.toFixed(2))}}</span>
-            <div class="date">
-                {{item.createdDate | date: "shortTime"}}
+        <div style="overflow-y: scroll; height: 350px;" class="transaction-container">
+            <div class="row transaction-item__bought" *ngFor="let item of boughtTransactions.transactions">
+                <span><b>{{item.customer}}</b></span>
+                <span><b>{{item.soldCurrency}}</b></span>
+                <span><b>{{formatNumber(item.soldAmount.toFixed(2))}}</b></span>
+                <span><b>{{item.boughtCurrency}}</b></span>
+                <span><b>{{item.exchangeRate}}</b></span>
+                <span><b>{{formatNumber(item.boughtAmount.toFixed(2))}}</b></span>
+                <div class="date">
+                    <b>{{item.createdDate | date: "shortTime"}}</b>
+                </div>
             </div>
         </div>
-        <br><br>
+        <br><br><br><br>
         <div class="summary-bought">
-            <span>Total Sold: {{formatNumber(boughtTransactions.sumSold.toFixed(2))}}</span>
-            <span>Avg. Rate: {{formatNumber(boughtTransactions.avgRate.toFixed(2))}}</span>
-            <span style="padding-left: 5px;">Total Bought: {{formatNumber(boughtTransactions.sumBought.toFixed(2))}}</span>
+            <span>Total Sold: <b>{{formatNumber(boughtTransactions.sumSold.toFixed(2))}}</b></span>
+            <span>Avg. Rate: <b>{{formatNumber(boughtTransactions.avgRate.toFixed(2))}}</b></span>
+            <span style="padding-left: 5px;">Total Bought: <b>{{formatNumber(boughtTransactions.sumBought.toFixed(2))}}</b></span>
         </div>
     </div>
 </div>
 <div class="row hint text-center" *ngIf="firstFilter == '' && secondFilter==''">
-    <div class="col-md-12">
+    <!-- <div class="col-md-12">
         <p class="anim-typewriter line">Click one of the main combinations or get started with your own!</p> 
-    </div>
+    </div> -->
 </div>
 
 

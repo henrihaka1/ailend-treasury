@@ -24,7 +24,7 @@ export class StartingPositionComponent implements OnInit {
     this.getCurrentBalance();
     setInterval(()=>{
       this.getCurrentBalance();
-    }, 4000);
+    }, 2000);
   }
 
   getCurrentBalance(){

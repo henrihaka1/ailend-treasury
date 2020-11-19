@@ -1,9 +1,9 @@
 <ai-starting-position></ai-starting-position>
 <ai-transaction-filter></ai-transaction-filter>
 <div class="container">
-	<div class="row">
-		<button (click)="submitNewBalance()">Submit</button>
-		<button (click)="submitNewTransaction()">Transaction</button>
+	<div class="row d-flex justify-content-center" style="margin-top:25px;">
+		<button mat-button class="upload" style="margin-right: 30px;  border-radius: 15px;" (click)="submitNewBalance()">Upload from Midas</button>
+		<button mat-button class='insert' (click)="submitNewTransaction()">Insert random transaction</button>
 	</div>
 	<div *ngIf="showBalance">
 		<div *ngFor="let item of latestBalance; index as i">

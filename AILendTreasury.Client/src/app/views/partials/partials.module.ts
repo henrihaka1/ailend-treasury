@@ -217,6 +217,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTabsModule,
     MatTooltipModule,
     MatDialogModule,
+    MatDatepickerModule,
 
     // ng-bootstrap modules
     NgbDropdownModule,

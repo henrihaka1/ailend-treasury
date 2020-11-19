@@ -1,6 +1,9 @@
 import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { UpdateTransactionsService } from './update-transactions.service';
 import { Transaction } from '../../../../../core/_models/TransactionDTO';
+import { TransferTransactionsService } from '../../transfer-transactions.service';
+import { Subscription } from 'rxjs';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 export class Balance{
   transactions:Transaction[]=[];
@@ -26,10 +29,24 @@ class OpenBalance{
 @Component({
   selector: 'ai-transaction-log',
   templateUrl: './transaction-log.component.html',
-  styleUrls: ['./transaction-log.component.scss']
+  styleUrls: ['./transaction-log.component.scss'],
+  animations: [
+		trigger("fadeInOut", [
+			transition(":enter", [
+				// :enter is alias to 'void => *'
+				style({ opacity: 0 }),
+				animate(700, style({ opacity: 1 })),
+			]),
+			transition(":leave", [
+				// :leave is alias to '* => void'
+				animate(500, style({ opacity: 0 })),
+			]),
+		])
+	],
 })
 export class TransactionLogComponent implements OnInit , OnChanges{
 
+  subscription: Subscription;
 
   currencies:any = [];
   matrix = new Map();
@@ -41,7 +58,26 @@ export class TransactionLogComponent implements OnInit , OnChanges{
   @Input() firstFilter: string = '';
   @Input() secondFilter: string = '';
 
-  constructor(private LogService: UpdateTransactionsService, private cd: ChangeDetectorRef) { }
+  constructor(
+    private LogService: UpdateTransactionsService, 
+    private cd: ChangeDetectorRef,
+    private transferTransactions:TransferTransactionsService) { 
+      this.subscription = this.transferTransactions.getTransaction().subscribe(transaction =>{
+        var key;
+        key = transaction.soldCurrency + '_' + transaction.boughtCurrency;
+        if(this.matrix.has(key))
+        {
+          let newBalance = this.matrix.get(key);
+          newBalance.transactions.push(transaction);
+          this.matrix.get(key).set(this.calculateBalance(newBalance));
+        }
+        else{
+          let newBalance = new Balance();
+          newBalance.transactions.push(transaction);
+          this.matrix.set(key, this.calculateBalance(newBalance));
+        }
+      });
+    }
 
   ngOnInit(): void {
     this.createLogMatrix();

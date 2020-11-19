@@ -20,7 +20,7 @@ const routes: Routes = [
         loadChildren: () => import('./views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
       },
       {
-        path: 'mail',
+        path: 'reports',
         loadChildren: () => import('./views/pages/apps/mail/mail.module').then(m => m.MailModule),
       },
       {
@@ -47,7 +47,7 @@ const routes: Routes = [
         path: 'builder',
         loadChildren: () => import('./views/theme/content/builder/builder.module').then(m => m.BuilderModule),
       },
-      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+      {path: '', redirectTo: 'auth', pathMatch: 'full'},
       {path: '**', redirectTo: 'dashboard', pathMatch: 'full'},
     ],
   },

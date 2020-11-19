@@ -1,9 +1,11 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { random } from 'lodash';
 import { CurrencyBalance } from 'src/app/core/_models/CurrencyBalance';
 import { TestService } from './test.service';
-
+import { ShowNotificationService } from '../../../components/transaction-notification/show-notification.service';
+import { Transaction } from 'src/app/core/_models/TransactionDTO';
+import { TransferState } from '@angular/platform-browser';
+import { TransferTransactionsService } from './transfer-transactions.service';
 
 @Component({
   selector: 'kt-dashboard',
@@ -16,7 +18,11 @@ export class DashboardComponent implements OnInit {
   currencies = [];
   showBalance =false;
 
-  constructor(private service: TestService)
+  constructor(
+    private service: TestService, 
+    private transactionNotification: ShowNotificationService, 
+    private transfTransaction: TransferTransactionsService,
+  )
   {
 
   }
@@ -36,10 +42,27 @@ export class DashboardComponent implements OnInit {
 
   submitNewTransaction()
   {
-    this.service.submitNewTransaction(this.list[Math.floor(Math.random() * this.list.length)]).subscribe(response => 
-      {
-        console.log(JSON.parse(response.balance));
-      });
+    var transaction = this.list[Math.floor(Math.random() * this.list.length)];
+    //var transaction = this.list[10];
+    var newTransaction = new Transaction();
+    newTransaction.createdDate = new Date();
+    newTransaction.boughtCurrency = transaction.BoughtCurrency;
+    newTransaction.soldCurrency = transaction.SoldCurrency;
+    newTransaction.exchangeRate = transaction.ExchangeRate;
+    newTransaction.soldAmount = transaction.SoldAmount;
+    newTransaction.customer = transaction.Customer;
+    newTransaction.boughtAmount = transaction.SoldAmount * transaction.ExchangeRate;
+
+    this.transactionNotification.createMessage(newTransaction);
+    this.transfTransaction.insertTransaction(newTransaction);
+    if ((newTransaction.soldAmount <= 50000 && newTransaction.soldCurrency!="ALL") || (newTransaction.soldAmount <= 500000 && newTransaction.soldCurrency == "ALL"))
+    {
+      console.log(transaction);
+      this.service.submitNewTransaction(transaction).subscribe(response => 
+        {
+          console.log(JSON.parse(response.balance));
+        });
+    }
   }
 
   submitNewBalance(){
@@ -53,6 +76,8 @@ export class DashboardComponent implements OnInit {
   }
 
   //TRANSACTIONS ARRAY :
+
+
   list = [
     {
       SoldCurrency : "ALL",
@@ -188,13 +213,80 @@ export class DashboardComponent implements OnInit {
       }
     },
     {
-
+      SoldCurrency : "ALL",
+      BoughtCurrency: "GDP",
+      SoldAmount:40000,
+      ExchangeRate: 1.4,
+      CreatedDate: new Date(),
+      Customer:"Henri Haka",
+      ApprovedBy:{ 
+        Id:2,
+        FirstName: "Arsid",
+        LastName:"Mithi",
+        Email:"asdada",
+        KeycloakId:"adada",
+        Department:"sales",
+        AutomaticTransactions:[],
+        ManualTransactions:[],
+        FXTransactions:[]
+      }
     },
     {
-
+      SoldCurrency : "USD",
+      BoughtCurrency: "EUR",
+      SoldAmount:7000,
+      ExchangeRate: 1.1,
+      CreatedDate: new Date(),
+      Customer:"Marsid Aga",
+      ApprovedBy:{ 
+        Id:2,
+        FirstName: "Arsid",
+        LastName:"Mithi",
+        Email:"asdada",
+        KeycloakId:"adada",
+        Department:"sales",
+        AutomaticTransactions:[],
+        ManualTransactions:[],
+        FXTransactions:[]
+      }
     },
     {
-
-    }
+      SoldCurrency : "USD",
+      BoughtCurrency: "ALL",
+      SoldAmount:20000,
+      ExchangeRate: 1.1,
+      CreatedDate: new Date(),
+      Customer:"Henri Haka",
+      ApprovedBy:{ 
+        Id:2,
+        FirstName: "Arsid",
+        LastName:"Mithi",
+        Email:"asdada",
+        KeycloakId:"adada",
+        Department:"sales",
+        AutomaticTransactions:[],
+        ManualTransactions:[],
+        FXTransactions:[]
+      }
+    },
+    {
+      SoldCurrency : "EUR",
+      BoughtCurrency: "GDP",
+      SoldAmount:60000,
+      ExchangeRate: 0.91,
+      CreatedDate: new Date(),
+      Customer:"Henri Haka",
+      ApprovedBy:{ 
+        Id:2,
+        FirstName: "Genti",
+        LastName:"Zotaj",
+        Email:"asdada",
+        KeycloakId:"adada",
+        Department:"sales",
+        AutomaticTransactions:[],
+        ManualTransactions:[],
+        FXTransactions:[]
+      }
+    },
   ]; 
 }

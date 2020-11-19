@@ -21,9 +21,33 @@ namespace AILendTreasury.Services.Implementations
 
         public async Task<BalanceDTO> InsertSalesTransaction(SalesTransactionDTO newTransaction)
         {
-            if (newTransaction.SoldAmount > 50000)
+            if ((newTransaction.SoldAmount > 50000 && newTransaction.SoldCurrency!="ALL") || (newTransaction.SoldAmount > 500000 && newTransaction.SoldCurrency == "ALL"))
             {
-                return new BalanceDTO();
+                Staff staffMember = new Staff()
+                {
+                    Department = "sales",
+                    Email = "henri.haka@fti.edu.al",
+                    FirstName = "Henri",
+                    LastName = "Haka",
+                    KeycloakId = "asdasdadasd",
+                };
+
+                Manual manualTransaction = new Manual()
+                {
+                    ApprovedBy = staffMember,
+                    BoughtAmount = newTransaction.SoldAmount * newTransaction.ExchangeRate,
+                    BoughtCurrency = newTransaction.BoughtCurrency,
+                    CreatedDate = newTransaction.CreatedDate,
+                    Customer = newTransaction.Customer,
+                    ExchangeRate = newTransaction.ExchangeRate,
+                    SoldAmount = newTransaction.SoldAmount,
+                    SoldCurrency = newTransaction.SoldCurrency,
+                    Position = await _unitOfWork.Positions.GetLatestPosition()
+                };
+                BalanceDTO updatedBalance = await _balanceService.PrepareBalance(newTransaction);
+                _unitOfWork.ManualTransactions.Add(manualTransaction);
+                _unitOfWork.SaveChanges();
+                return updatedBalance;
             }
             else
             {

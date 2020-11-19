@@ -37,24 +37,28 @@
         <!--begin::Daterange-->
         <a href="#" class="btn btn-light btn-sm font-weight-bold mr-3" id="kt_dashboard_daterangepicker" data-toggle="tooltip" title="Select dashboard daterange" data-placement="left">
           <span class="text-muted font-weight-bold mr-2" id="kt_dashboard_daterangepicker_title">Today</span>
-          <span class="text-primary font-weight-bold" id="kt_dashboard_daterangepicker_date">Aug 16</span>
+          <span class="text-primary font-weight-bold" id="kt_dashboard_daterangepicker_date">{{today | date: "shortDate"}}</span>
         </a>
+        <mat-form-field style="width:1px;visibility:hidden;">
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button mat-button (click)="picker.open()" style="width: 50px;"><mat-icon>date_range</mat-icon></button>
         <!--end::Daterange-->
       </ng-container>
 
       <!--begin::Actions-->
-      <a href="#" class="btn btn-light font-weight-bold btn-sm">
+      <!-- <a href="#" class="btn btn-light font-weight-bold btn-sm">
         Actions
-      </a>
+      </a>-->
       <!--end::Actions-->
 
       <!--begin::Dropdown-->
-      <div ngbDropdown [placement]="'bottom-right'"  class="dropdown dropdown-inline" ngbTooltip="Quick actions">
+      <!-- <div ngbDropdown [placement]="'bottom-right'"  class="dropdown dropdown-inline" ngbTooltip="Quick actions">
 				<a ngbDropdownToggle href="javascript:;" class="btn btn-icon">
 					<span class="svg-icon svg-icon-success svg-icon-2x" [inlineSVG]="'./assets/media/svg/icons/Files/File-plus.svg'"></span>
 				</a>
 				<div ngbDropdownMenu class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-          <!--begin::Navigation-->
           <ul class="navi navi-hover">
             <li class="navi-header font-weight-bold py-5">
               <span class="font-size-lg">Choose Label:</span>
@@ -104,9 +108,8 @@
               </a>
             </li>
           </ul>
-          <!--end::Navigation-->
 				</div>
-			</div>
+			</div>  -->
       <!--end::Dropdown-->
     </div>
 	</div>
