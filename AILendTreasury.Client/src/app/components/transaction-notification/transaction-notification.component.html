@@ -20,6 +20,6 @@
         </button> -->
       </div>
       <button *ngIf="!messageIterator.manual" mat-button class="undo" (click)="removeNotification(messageIterator)">Mark as read</button>
-      <button *ngIf="messageIterator.manual" mat-button class="undo" (click)="insertTransaction(messageIterator.transaction)">Approve</button>
+      <button *ngIf="messageIterator.manual" mat-button class="undo" (click)="insertTransaction(messageIterator)">Approve</button>
     </aside>
 </div>

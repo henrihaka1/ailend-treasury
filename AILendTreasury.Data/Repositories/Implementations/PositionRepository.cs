@@ -1,6 +1,7 @@
 ﻿using AILendTreasury.Data.Entities;
 using AILendTreasury.Data.Repositories.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,6 +35,11 @@ namespace AILendTreasury.Data.Repositories.Implementations
                 Where(x => x.SubmitedDate.Year == Date.Year
                 && x.SubmitedDate.Month == Date.Month
                 && x.SubmitedDate.Day == Date.Day).FirstOrDefault();
+        }
+
+        public async Task<List<Position>> GetPositions()
+        {
+            return _context.Positions.ToList();
         }
     }
 }

@@ -4,6 +4,9 @@ import { Transaction } from '../../../../../core/_models/TransactionDTO';
 import { TransferTransactionsService } from '../../transfer-transactions.service';
 import { Subscription } from 'rxjs';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { select, Store } from '@ngrx/store';
+import { AppState } from 'src/app/core/reducers';
+import { currentUserRoleIds } from '../../../../../../../src/app/core/auth';
 
 export class Balance{
   transactions:Transaction[]=[];
@@ -51,17 +54,21 @@ export class TransactionLogComponent implements OnInit , OnChanges{
   currencies:any = [];
   matrix = new Map();
   open = new Map();
+  subs:Subscription[] = [];
 
   soldTransactions:Balance;
   boughtTransactions:Balance;
 
   @Input() firstFilter: string = '';
   @Input() secondFilter: string = '';
+  role:number;
 
   constructor(
     private LogService: UpdateTransactionsService, 
     private cd: ChangeDetectorRef,
-    private transferTransactions:TransferTransactionsService) { 
+    private transferTransactions:TransferTransactionsService,
+    private store: Store<AppState>) 
+    { 
       this.subscription = this.transferTransactions.getTransaction().subscribe(transaction =>{
         var key;
         key = transaction.soldCurrency + '_' + transaction.boughtCurrency;
@@ -80,18 +87,29 @@ export class TransactionLogComponent implements OnInit , OnChanges{
     }
 
   ngOnInit(): void {
-    this.createLogMatrix();
+    this.subs.push(this.store.pipe(select(currentUserRoleIds)).subscribe(response => {
+      console.log(response[1]);
+      this.role = response[1];
+    }));
+    setTimeout(()=>{this.createLogMatrix();}, 1000);
+
   }
 
   ngOnChanges(changes:SimpleChanges){
     if(changes.firstFilter || changes.secondFilter)
     {
       if(this.matrix.has(this.firstFilter + '_' + this.secondFilter))
+      {
         this.soldTransactions = this.matrix.get(this.firstFilter + '_' + this.secondFilter);
+        this.soldTransactions.transactions.reverse();
+      }
       else
         this.soldTransactions = new Balance();
       if(this.matrix.has(this.secondFilter + '_' + this.firstFilter))
+      {
         this.boughtTransactions = this.matrix.get(this.secondFilter + '_' + this.firstFilter);
+        this.boughtTransactions.transactions.reverse();
+      }
       else
         this.boughtTransactions = new Balance();
     }
@@ -135,27 +153,59 @@ export class TransactionLogComponent implements OnInit , OnChanges{
   // }
 
   createLogMatrix() {
-    this.LogService.getAllTransactions(new Date()).subscribe(response => {
-      var key;
-      response.forEach(element => {
-        key = `${element.soldCurrency}_${element.boughtCurrency}`;
-        if(!this.matrix.has(key)) {
-          let newBalance = new Balance();
-          newBalance.transactions.push(element);
-          this.matrix.set(key, this.calculateBalance(newBalance));
-        }
-        else {
-          let newBalance = this.matrix.get(key);
-          newBalance.transactions.push(element);
-          this.matrix.get(key).set(this.calculateBalance(newBalance));
-        }
+    var sub;
+    if(this.role == 2)
+    {
+      sub = this.LogService.getAllTransactions(new Date()).subscribe(response => {
+        var key;
+        response.forEach(element => {
+          key = `${element.soldCurrency}_${element.boughtCurrency}`;
+          if(!this.matrix.has(key)) {
+            let newBalance = new Balance();
+            newBalance.transactions.push(element);
+            this.matrix.set(key, this.calculateBalance(newBalance));
+          }
+          else {
+            let newBalance = this.matrix.get(key);
+            newBalance.transactions.push(element);
+            this.matrix.get(key).set(this.calculateBalance(newBalance));
+          }
+        })
+  
+        // this.matrix.forEach((value, key) => {
+        //   //console.log(key, value);
+        // });
+        
       })
+    }
+    else if (this.role == 3)
+    {
+      console.log("hah");
+      sub = this.LogService.getAllFxTransactions(new Date()).subscribe(response => {
+        var key;
+        console.log(response);
+        response.forEach(element => {
+          key = `${element.soldCurrency}_${element.boughtCurrency}`;
+          if(!this.matrix.has(key)) {
+            let newBalance = new Balance();
+            newBalance.transactions.push(element);
+            this.matrix.set(key, this.calculateBalance(newBalance));
+          }
+          else {
+            let newBalance = this.matrix.get(key);
+            newBalance.transactions.push(element);
+            this.matrix.get(key).set(this.calculateBalance(newBalance));
+          }
+        })
+  
+        // this.matrix.forEach((value, key) => {
+        //   //console.log(key, value);
+        // });
+        
+      })
+    }
 
-      // this.matrix.forEach((value, key) => {
-      //   //console.log(key, value);
-      // });
-      
-    })
+    this.subs.push(sub);
   }
 
   calculateBalance(balance: Balance) : Balance{ 
@@ -173,6 +223,8 @@ export class TransactionLogComponent implements OnInit , OnChanges{
         balance.avgRate = 0;
       else
         balance.avgRate = balance.sumBought / balance.sumSold;
+
+      this.cd.detectChanges();
       return balance;
     }
   }

@@ -42,4 +42,9 @@ export class TestService {
   {
     return this.http.post<any>("http://localhost:5000/api/transaction/new", newTransaction, {headers:headerz});
   }
+
+  submitFxTransaction(newTransaction):Observable<any>
+  {
+    return this.http.post<any>("http://localhost:5000/api/transaction/fx/new", newTransaction, {headers:headerz});
+  }
 }

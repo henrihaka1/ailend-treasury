@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CurrencyBalance } from 'src/app/core/_models/CurrencyBalance';
 import { PositionService } from './position.service';
 
@@ -12,31 +13,35 @@ export class StartingPositionComponent implements OnInit {
   startingBalance :CurrencyBalance[];
   latestBalance: CurrencyBalance[];
   differenceBalance: CurrencyBalance[];
+  timerId;
+  subs : Subscription[] = [];
 
   constructor(private PositionService: PositionService,private cd : ChangeDetectorRef) { }
 
   ngOnInit(): void {
-      this.PositionService.getStartingBalance().subscribe(response => {
+      this.subs.push(this.PositionService.getStartingBalance().subscribe(response => {
       this.startingBalance = JSON.parse(response.balance);
         console.log(this.startingBalance);
         this.cd.detectChanges();
-    });
+    }));
     this.getCurrentBalance();
-    setInterval(()=>{
+    this.timerId = setInterval(()=>{
       this.getCurrentBalance();
     }, 2000);
   }
 
   getCurrentBalance(){
-    this.PositionService.getCurrentBalance().subscribe(response => {
+    var sub = this.PositionService.getCurrentBalance().subscribe(response => {
       this.latestBalance = JSON.parse(response.balance);
         console.log(this.latestBalance);
         this.cd.detectChanges();
     });
+    this.subs.push(sub);
   }
 
   ngOnDestroy(){
-    
+    clearInterval(this.timerId);
+    this.subs.forEach(sub => sub.unsubscribe());
   }
 
 

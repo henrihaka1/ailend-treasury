@@ -12,10 +12,22 @@ namespace AILendTreasury.Data
         IStaffRepository _staffMembers;
         IAutomaticRepository _automaticTransactions;
         IManualRepository _manualTransactions;
+        IFxRepository _fxTransactions;
 
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public IFxRepository FxTransactions
+        {
+            get
+            {
+                if (_fxTransactions == null)
+                    _fxTransactions = new FxRepository(_context);
+                
+                return _fxTransactions;
+            }
         }
 
         public ICurrenciesRepository Currencies

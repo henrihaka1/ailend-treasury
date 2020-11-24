@@ -2,11 +2,12 @@
     <div></div>
     <div *ngFor="let item of startingBalance" class="label-box text-center">
         <div>
-            <b>{{item.label}}</b> <img src="../../../../../assets/media/logos/long.png">
+            <b>{{item.label}}</b> 
+            <!-- <img src="../../../../../assets/media/logos/long.png"> -->
         </div>
     </div>
     <div class="title text-center">
-        Nostro Balance
+        Starting position
     </div>
     <div *ngFor="let item of startingBalance" class="amount-box text-center">
         <div>
@@ -14,7 +15,7 @@
         </div>
     </div>
     <div class="title text-center">
-        Open position
+        Current position
     </div>
     <div *ngFor="let item of latestBalance; index as i" class="amount-box text-center">
         <div [ngClass]="{'text-danger':item.amount - startingBalance[i].amount<0, 'text-success':item.amount - startingBalance[i].amount>0,'': item.amount - startingBalance[i].amount==0} ">

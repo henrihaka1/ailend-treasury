@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { Transaction } from 'src/app/core/_models/TransactionDTO';
 import { ManualTransactionService } from './manual-transaction.service';
 import { ShowNotificationService } from './show-notification.service';
+import { TransferTransactionsService } from '../../views/pages/dashboard/transfer-transactions.service';
+
 @Component({
   selector: 'ai-transaction-notification',
   templateUrl: './transaction-notification.component.html',
@@ -21,15 +23,44 @@ export class TransactionNotificationComponent implements OnInit {
   @ViewChildren('messageToHide') private displayedNotifications: QueryList<ElementRef>;
   constructor(
     private notificationService: ShowNotificationService,
-    private transactionService: ManualTransactionService) 
+    private transactionService: ManualTransactionService,
+    private transferTransaction: TransferTransactionsService) 
     { }
 
-  insertTransaction(transaction:Transaction){
+  insertTransaction(transaction){
     if(this.Input!='')
     {
-      this.transactionService.sendManualTransaction(transaction, parseFloat(this.Input)).subscribe(response => {
-        console.log(response);
-      });
+      if(transaction.transaction.customer =='BKT' || transaction.transaction.customer =='OTP' || transaction.transaction.customer =='TRB')
+      {
+        this.transactionService.sendFxTransaction(transaction.transaction, parseFloat(this.Input)).subscribe(response => {
+          let newTransaction = new Transaction();
+          newTransaction.soldAmount = transaction.transaction.soldAmount;
+          newTransaction.soldCurrency = transaction.transaction.soldCurrency;
+          newTransaction.boughtCurrency = transaction.transaction.boughtCurrency;
+          newTransaction.customer = transaction.transaction.customer;
+          newTransaction.exchangeRate = parseFloat(this.Input);
+          newTransaction.boughtAmount = newTransaction.soldAmount * newTransaction.exchangeRate;
+          newTransaction.createdDate = new Date();
+          this.transferTransaction.insertTransaction(newTransaction);
+          this.removeNotification(transaction);
+          this.Input = '';
+        })
+      }
+      else{
+        this.transactionService.sendManualTransaction(transaction.transaction, parseFloat(this.Input)).subscribe(response => {
+          let newTransaction = new Transaction();
+          newTransaction.soldAmount = transaction.transaction.soldAmount;
+          newTransaction.soldCurrency = transaction.transaction.soldCurrency;
+          newTransaction.boughtCurrency = transaction.transaction.boughtCurrency;
+          newTransaction.customer = transaction.transaction.customer;
+          newTransaction.exchangeRate = parseFloat(this.Input);
+          newTransaction.boughtAmount = newTransaction.soldAmount * newTransaction.exchangeRate;
+          newTransaction.createdDate = new Date();
+          this.transferTransaction.insertTransaction(newTransaction);
+          this.removeNotification(transaction);
+          this.Input = '';
+        });
+      }
     }
 
   }
@@ -38,8 +69,9 @@ export class TransactionNotificationComponent implements OnInit {
     this.subscription = this.notificationService.getMessage().subscribe( notification => {
       if(notification)
       {
-        console.log(notification);
         this.messages.push(notification);
+        if(!notification.manual)
+          this.timerId = setTimeout(()=>{this.removeNotification(notification)}, 5000);
       } 
     });
   }

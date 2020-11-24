@@ -2,7 +2,7 @@ export class PageConfig {
   public defaults: any = {
     dashboard: {
       page: {
-        title: 'Dashboard',
+        title: 'AILend Treasury',
         desc: 'Latest updates and statistic charts'
       },
     },

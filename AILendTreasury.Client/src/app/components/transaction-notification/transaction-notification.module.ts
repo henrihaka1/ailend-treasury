@@ -4,9 +4,10 @@ import { TransactionNotificationComponent } from './transaction-notification.com
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { CheckNumberDirective } from './check-number.directive';
 
 @NgModule({
-  declarations: [TransactionNotificationComponent],
+  declarations: [TransactionNotificationComponent, CheckNumberDirective],
   imports: [
     CommonModule,
     MatIconModule,

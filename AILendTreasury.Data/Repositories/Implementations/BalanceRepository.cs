@@ -15,6 +15,11 @@ namespace AILendTreasury.Data.Repositories.Implementations
             _context = context;
         }
 
+        public async Task<List<Balance>> GetBalances(long id)
+        {
+            return _context.Balances.Where(x => x.Position.Id == id).ToList();
+        }
+
         public async Task<Balance> GetLatestBalanceByPositionId(long id)
         {
             return _context.Balances.Where(x => x.Position.Id == id).OrderByDescending(x => x.Id).FirstOrDefault();

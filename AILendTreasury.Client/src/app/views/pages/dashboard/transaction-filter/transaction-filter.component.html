@@ -1,5 +1,62 @@
 <div class="wrapper" style="padding-top: 20px !important;">
-    <div></div>
+    <div *ngIf="role == 2"></div>
+    <div *ngIf="role == 3" class="container text-center" >
+        <a href="javascript:;" class="filter-box text-center" (click)="showCreate = !showCreate" style="width: 205px;">
+            <b>Create transaction</b>
+        </a>
+        <div class="details" *ngIf="showCreate" 
+            style="position: fixed; 
+            z-index: 100;
+            background-color: rgb(230, 230, 230);
+            border: 2px solid rgb(230, 230, 230);"
+            >
+            <form [formGroup]="myForm">
+                <mat-form-field appearance="fill" formControlName="boughtCurrency">
+                    <mat-label>Currency to buy</mat-label>
+                    <mat-select style="z-index: 2100;" required>
+                        <mat-option value="ALL">ALL</mat-option>
+                        <mat-option value="EUR">EUR</mat-option>
+                        <mat-option value="USD">USD</mat-option>
+                        <mat-option value="GDP">GDP</mat-option>
+                        <mat-option value="CAD">CAD</mat-option>
+                        <mat-option value="CHF">CHF</mat-option>
+                        <mat-option value="SGD">SGD</mat-option>
+                        <mat-option value="AUD">AUD</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="fill" formControlName = "soldCurrency">
+                    <mat-label>Currency to sell</mat-label>
+                    <mat-select matNativeControl required>
+                        <mat-option value="ALL">ALL</mat-option>
+                        <mat-option value="EUR">EUR</mat-option>
+                        <mat-option value="USD">USD</mat-option>
+                        <mat-option value="GDP">GDP</mat-option>
+                        <mat-option value="CAD">CAD</mat-option>
+                        <mat-option value="CHF">CHF</mat-option>
+                        <mat-option value="SGD">SGD</mat-option>
+                        <mat-option value="AUD">AUD</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                    <br><mat-form-field appearance="fill">
+                        <mat-label>Bank to buy</mat-label>
+                        <mat-select matNativeControl required>
+                            <mat-option value="BKT">BKT</mat-option>
+                            <mat-option value="OTP">OTP</mat-option>
+                            <mat-option value="TRB">TRB</mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Amount to buy</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+            </form>
+            <br>
+            <button mat-button style="background-color: black; margin-bottom: 5px; border-radius: 10px; color: white; font-family: Poppins;"
+            (click)="createTransaction()">Submit</button>
+        </div>
+    </div>
     <div class="container text-center">
         <a href="javascript:;" class="filter-box text-center" (click)="updateFilters('EUR', 'ALL')">
             <b>EUR-ALL</b>

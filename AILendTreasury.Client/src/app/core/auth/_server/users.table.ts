@@ -28,22 +28,22 @@ export class UsersTable {
     },
     {
       id: 2,
-      username: 'user',
-      password: 'demo',
-      email: 'user@demo.com',
+      username: 'sales',
+      password: 'sales',
+      email: 'sales@sales.com',
       accessToken: 'access-token-6829bba69dd3421d8762-991e9e806dbf',
       refreshToken: 'access-token-f8e4c61a318e4d618b6c199ef96b9e55',
-      roles: [2], // Manager
-      pic: './assets/media/users/100_2.jpg',
-      fullname: 'Megan',
-      occupation: 'Deputy Head of Keenthemes in New York office',
-      companyName: 'Keenthemes',
-      phone: '456669067891',
+      roles: [1, 2], // Sales
+      pic: '',
+      fullname: 'Sales',
+      occupation: 'Sales',
+      companyName: 'Raiffeisen Bank',
+      phone: '+355 676543454',
       address: {
-        addressLine: '3487  Ingram Road',
-        city: 'Greensboro',
-        state: 'North Carolina',
-        postCode: '27409'
+        addressLine: '',
+        city: '',
+        state: '',
+        postCode: ''
       },
       socialNetworks: {
         linkedIn: 'https://linkedin.com/user',
@@ -54,22 +54,22 @@ export class UsersTable {
     },
     {
       id: 3,
-      username: 'guest',
-      password: 'demo',
-      email: 'guest@demo.com',
+      username: 'fx',
+      password: 'fxfx',
+      email: 'fx@fx.com',
       accessToken: 'access-token-d2dff7b82f784de584b60964abbe45b9',
       refreshToken: 'access-token-c999ccfe74aa40d0aa1a64c5e620c1a5',
-      roles: [3], // Guest
-      pic: './assets/media/users/default.jpg',
-      fullname: 'Ginobili Maccari',
-      occupation: 'CFO',
-      companyName: 'Keenthemes',
-      phone: '456669067892',
+      roles: [1, 3], // FX
+      pic: '',
+      fullname: 'FX',
+      occupation: 'FX',
+      companyName: 'Raiffeisen Bank',
+      phone: '+355 5433443',
       address: {
-        addressLine: '1467  Griffin Street',
-        city: 'Phoenix',
-        state: 'Arizona',
-        postCode: '85012'
+        addressLine: '',
+        city: '',
+        state: '',
+        postCode: ''
       },
       socialNetworks: {
         linkedIn: 'https://linkedin.com/guest',

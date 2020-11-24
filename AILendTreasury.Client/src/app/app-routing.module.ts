@@ -16,7 +16,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'dashboard',
+        path: 'workspace',
         loadChildren: () => import('./views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
       },
       {
@@ -24,7 +24,7 @@ const routes: Routes = [
         loadChildren: () => import('./views/pages/apps/mail/mail.module').then(m => m.MailModule),
       },
       {
-        path: 'ecommerce',
+        path: 'dashboard',
         loadChildren: () => import('./views/pages/apps/e-commerce/e-commerce.module').then(m => m.ECommerceModule),
       },
       {
@@ -48,7 +48,7 @@ const routes: Routes = [
         loadChildren: () => import('./views/theme/content/builder/builder.module').then(m => m.BuilderModule),
       },
       {path: '', redirectTo: 'auth', pathMatch: 'full'},
-      {path: '**', redirectTo: 'dashboard', pathMatch: 'full'},
+      {path: '**', redirectTo: 'workspace', pathMatch: 'full'},
     ],
   },
   {path: '**', redirectTo: 'error/403', pathMatch: 'full'},

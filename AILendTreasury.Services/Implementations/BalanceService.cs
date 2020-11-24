@@ -24,6 +24,23 @@ namespace AILendTreasury.Services.Implementations
             _positionService = positionService;
         }
 
+        public async Task<List<BalanceDTO>> GetBalances()
+        {
+            List<Position> positions = await _unitOfWork.Positions.GetPositions();
+            List<BalanceDTO> balances = new List<BalanceDTO>();
+            foreach(var position in positions)
+            {
+                Balance balance = await _unitOfWork.Balances.GetLatestBalanceByPositionId(position.Id);
+                BalanceDTO newBalance = new BalanceDTO()
+                {
+                    Balance = Utility.JsonToString(balance.CurrentBalance),
+                    SubmitedDate = balance.SubmitedDate,
+                };
+                balances.Add(newBalance);
+            }
+            return balances;
+        }
+
         public async Task<BalanceDTO> GetLatestBalance(DateTime today)
         {
             Position position = await _unitOfWork.Positions.GetLatestPosition();
@@ -52,6 +69,23 @@ namespace AILendTreasury.Services.Implementations
                 startingBalance.Balance = Utility.JsonToString(currentStartingBalance.CurrentBalance);
             }
             return startingBalance;
+        }
+
+        public async Task<List<BalanceDTO>> GetTodayBalances()
+        {
+            Position position = await _unitOfWork.Positions.GetLatestPosition();
+            List<Balance> balances = await _unitOfWork.Balances.GetBalances(position.Id);
+            List<BalanceDTO> balancesToReturn = new List<BalanceDTO>();
+            foreach (var balance in balances)
+            {
+                var newBalance = new BalanceDTO()
+                {
+                    SubmitedDate = balance.SubmitedDate,
+                    Balance = Utility.JsonToString(balance.CurrentBalance)
+                };
+                balancesToReturn.Add(newBalance);
+            }
+            return balancesToReturn;
         }
 
         public async Task<BalanceDTO> PrepareBalance(SalesTransactionDTO newTransaction)
@@ -92,6 +126,46 @@ namespace AILendTreasury.Services.Implementations
                 updatedBalance.Balance = json;
             }
             return await UpdateBalance(updatedBalance);            
+        }
+
+        public async Task<BalanceDTO> PrepareBalance(FxTransactionDTO newTransaction)
+        {
+            DateTime currentDate = DateTime.Today;
+            Position latestPosition = await _unitOfWork.Positions.GetLatestPosition();
+
+            BalanceDTO updatedBalance = new BalanceDTO();
+
+            if (latestPosition.SubmitedDate.Year == currentDate.Year &&
+            latestPosition.SubmitedDate.Month == currentDate.Month &&
+            latestPosition.SubmitedDate.Day == currentDate.Day)
+            {
+                JsonDocument latestBalanceJson = _unitOfWork.Balances.GetLatestBalanceByPositionId(latestPosition.Id).Result.CurrentBalance;
+                string temp = latestBalanceJson.RootElement.ToString();
+                var boughtCurrency = newTransaction.BoughtCurrency;
+                var soldCurrency = newTransaction.SoldCurrency;
+
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<CurrencyBalanceDTO>));
+                MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(temp));
+                var obj = (List<CurrencyBalanceDTO>)ser.ReadObject(stream);
+
+                foreach (CurrencyBalanceDTO item in obj)
+                {
+                    if (item.label == soldCurrency)
+                    {
+                        item.amount += newTransaction.SoldAmount;
+                    }
+                    if (item.label == boughtCurrency)
+                    {
+                        item.amount -= newTransaction.SoldAmount * newTransaction.ExchangeRate;
+                    }
+                }
+
+                var json = new JavaScriptSerializer().Serialize(obj);
+
+                updatedBalance.SubmitedDate = DateTime.Now;
+                updatedBalance.Balance = json;
+            }
+            return await UpdateBalance(updatedBalance);
         }
 
         public async Task<BalanceDTO> UpdateBalance(BalanceDTO newBalance)

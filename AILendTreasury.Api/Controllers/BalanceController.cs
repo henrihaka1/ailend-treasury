@@ -64,5 +64,33 @@ namespace AILendTreasury.Api.Controllers
             }
         }
 
+        [HttpGet("get/balances")]
+        public async Task<IActionResult> GetBalances()
+        {
+            try
+            {
+                List<BalanceDTO> balances = await _balanceService.GetBalances();
+                return Ok(balances);
+            }
+            catch
+            {
+                return BadRequest("Something went wrong");
+            }
+        }
+
+        [HttpGet("get/today")]
+        public async Task<IActionResult> GetTodayBalances()
+        {
+            try
+            {
+                List<BalanceDTO> balances = await _balanceService.GetTodayBalances();
+                return Ok(balances);
+            }
+            catch
+            {
+                return BadRequest("Something went wrong");
+            }
+        }
+
     }
 }

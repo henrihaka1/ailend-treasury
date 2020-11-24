@@ -376,11 +376,11 @@ export class MenuConfig {
       self: {},
       items: [
         {
-          title: 'Dashboard',
+          title: 'Workspace',
           root: true,
           icon: 'flaticon2-architecture-and-city',
-          page: '/dashboard',
-          translate: 'MENU.DASHBOARD',
+          page: '/workspace',
+          translate: 'Workspace',
           bullet: 'dot',
         },
         {
@@ -390,13 +390,13 @@ export class MenuConfig {
           page: '/reports',
           translate: 'Reports',
           bullet: 'dot',
-        }
-        // {
-        //   title: 'Layout Builder',
-        //   root: true,
-        //   icon: 'flaticon2-expand',
-        //   page: '/builder'
-        // },
+        },
+        {
+          title: 'Dashboard',
+          root: true,
+          icon: 'flaticon2-expand',
+          page: '/dashboard'
+        },
         // {section: 'Components'},
         // {
         //   title: 'Google Material',

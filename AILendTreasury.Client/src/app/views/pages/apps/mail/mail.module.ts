@@ -13,7 +13,7 @@ import { MailComponent } from './mail.component';
 				path: '',
 				component: MailComponent
 			}
-		])
+		]),
 	],
 	declarations: [MailComponent]
 })

@@ -30,4 +30,11 @@ export class UpdateTransactionsService {
     const URL = TRANSACTION_URL + '/sales/get';
     return this.http.get<Transaction[]>(URL, {params: params});
   }
+
+  getAllFxTransactions(date: Date):Observable<Transaction[]>{
+    const params = new HttpParams().append('targetDate', date.toDateString())
+      
+    const URL = TRANSACTION_URL + '/fx/get';
+    return this.http.get<Transaction[]>(URL, {params: params});
+  }
 }

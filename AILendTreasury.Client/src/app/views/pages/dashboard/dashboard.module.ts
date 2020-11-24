@@ -14,6 +14,8 @@ import { TransactionLogComponent } from './transaction-filter/transaction-log/tr
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -32,7 +34,9 @@ import { MatButtonModule } from '@angular/material/button';
     NgbTooltipModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   declarations: [

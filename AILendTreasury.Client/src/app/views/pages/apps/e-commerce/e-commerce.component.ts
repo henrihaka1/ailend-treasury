@@ -1,22 +1,13 @@
 // Angular
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-	templateUrl: './e-commerce.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'kt-dashboard',
+  templateUrl: './e-commerce.component.html',
+  styleUrls: ['./e-commerce.component.scss'],
 })
 export class ECommerceComponent implements OnInit {
-	/**
-	 * Component constructor
-	 */
-	constructor() {}
 
-	/*
-	 * @ Lifecycle sequences => https://angular.io/guide/lifecycle-hooks
-    */
-
-	/**
-	 * On init
-	 */
-	ngOnInit() {}
+  ngOnInit(): void {
+  }
 }

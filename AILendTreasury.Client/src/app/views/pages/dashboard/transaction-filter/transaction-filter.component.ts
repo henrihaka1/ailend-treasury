@@ -1,25 +1,51 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { first } from 'rxjs/operators';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { AppState } from 'src/app/core/reducers';
+import { currentUserRoleIds} from '../../../../core/auth/_selectors/auth.selectors';
 import { TransactionLogComponent } from './transaction-log/transaction-log.component';
 import { Balance } from './transaction-log/transaction-log.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'ai-transaction-filter',
   templateUrl: './transaction-filter.component.html',
   styleUrls: ['./transaction-filter.component.scss']
 })
-export class TransactionFilterComponent implements OnInit {
+export class TransactionFilterComponent implements OnInit, OnDestroy {
 
   firstCurrency:string = '';
   secondCurrency:string = '';
+  subs: Subscription[] = [];
+  role:number;
+
   @ViewChild(TransactionLogComponent) transactionLog :TransactionLogComponent;
   
   showCustom = false;
+  showCreate=false;
 
-  constructor() { }
+  myForm: FormGroup;
+
+  constructor(private store: Store<AppState>, 
+    private fb: FormBuilder) { 
+  }
 
   ngOnInit(): void {
+    this.subs.push(this.store.pipe(select(currentUserRoleIds)).subscribe(response => {
+      this.role = response[1];
+    }));
+    this.myForm = this.fb.group({
+      soldCurrency: '',
+      boughtCurrency :'',
+      buyAmmount: '',
+      bank:'',
 
+    })
+    this.subs.push(this.myForm.valueChanges.subscribe())
+  }
+
+  ngOnDestroy(){
+    this.subs.forEach(sub => sub.unsubscribe());
   }
 
   updateFilters(first: string, second:string){
@@ -66,6 +92,10 @@ export class TransactionFilterComponent implements OnInit {
       min = sold.sumSold;
     
     return (min*(bought.avgRate-sold.avgRate)).toFixed(2);
+  }
+
+  createTransaction(){
+
   }
 
 }

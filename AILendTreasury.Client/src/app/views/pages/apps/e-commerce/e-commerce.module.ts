@@ -88,14 +88,17 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 const routes: Routes = [
 	{
 		path: '',
-		component: ECommerceComponent,
-		// canActivate: [ModuleGuard],
-		// data: { moduleName: 'ecommerce' },
+		canActivate: [ModuleGuard],
+		data: { moduleName: 'ecommerce' },
 		children: [
 			{
 				path: '',
 				redirectTo: 'customers',
 				pathMatch: 'full'
+			},
+			{
+				path: 'dashboard',
+				component: ECommerceComponent
 			},
 			{
 				path: 'customers',
